@@ -1,0 +1,2600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYB.ISP.2 - Authentication and Access Control</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <h3 class="headers">CYB.ISP.2 - Authentication and Access Control</h3>
+
+
+    <br>
+    <br>
+
+
+    <!--  I N T R O D U C T I O N   T O   C R Y P T O G R A P H Y  -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="heading-IntroductionToCryptography">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-IntroductionToCryptography" aria-expanded="false" aria-controls="collapse-IntroductionToCryptography">
+            <strong>Introduction to Cryptography</strong>
+        </button>
+      </h2>
+      <div id="collapse-IntroductionToCryptography" class="accordion-collapse collapse" aria-labelledby="heading-IntroductionToCryptography" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+
+
+        <h6 class="letters"> B </h6>
+
+
+            <!--  B I R T H D A Y  P A R A D O X  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-BirthdayParadox">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-BirthdayParadox" aria-expanded="false" aria-controls="collapse-BirthdayParadox">
+                        <strong>Birthday Paradox</strong>
+                    </button>
+                </h2>
+                <div id="collapse-BirthdayParadox" class="accordion-collapse collapse" aria-labelledby="heading-BirthdayParadox" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <h6>The Birthday Paradox considers the probability that some paired people in a set of <i>n</i> randomly chosen of them, will have the same birthday</h6>
+
+                        <br>
+
+                        <ul>
+                            <li>A collision, which should be hard to find, can be found in 2⁽ⁿ/²⁾ trials for a hash of length <i>n</i> bits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        <h6 class="letters"> D </h6>
+
+        
+        <!--  D A T A  E N C R Y P T I O N  S T A N D A R D  ( D E S )  -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-" aria-expanded="false" aria-controls="collapse-">
+              <strong>Data Encryption Standard (DES)</strong>
+          </button>
+          </h2>
+          <div id="collapse-" class="accordion-collapse collapse" aria-labelledby="heading-" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  <h6>Symmetric-key / Private key model algorithm for the encryption of digital data</h6>
+
+                  <br>
+
+                  <h6>Controversial <i>because it was designed by IBM, who wasn't really widely liked by lots of people in the community and had help from the NSA, which are not universally trusted and was regarded suspicious by many cryptographers etc etc.</i></h6>
+
+                  <h6>Uses a bunch of complex data structures internally such as</h6>
+                  <ul>
+                      <li>a Feistel structure</li>
+                      <li>S-boxes</li>
+                      <li>a Key schedule where it does permutations and shifts</li>
+                      <li>etc.</li>
+                  </ul>
+
+                  <br>
+
+                  <h6>It performs</h6>
+                  <ul>
+                      <li>a lot of fairly simple math</li>
+                      <li>a lot of bitwise shifts</li>
+                      <li>a lot of XORs</li>
+                      <li>etc.</li>
+                  </ul>
+              </div>
+          </div>
+        </div>
+
+
+        <!--  D I G I T A L   C E R T I F I C A T E S  -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-DigitalCertificates">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-DigitalCertificates" aria-expanded="false" aria-controls="collapse-DigitalCertificates">
+                <strong>Digital certificates</strong>
+            </button>
+          </h2>
+          <div id="collapse-DigitalCertificates" class="accordion-collapse collapse" aria-labelledby="heading-DigitalCertificates" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <h6>An electronic document used to prove the ownership of a Public key</h6>
+
+              <br>
+
+              <h6>A digital certificate includes information about</h6>
+              <ul>
+                <li>the Public key</li>
+                <li>the identity of its owner (subject)</li>
+                <li>the digital signature of an entity that has verified the certificate's contents (issuer)</li>
+              </ul>
+
+              <br>
+
+              <img src="CYB.ISP.2 img/certificate.png">
+            </div>
+          </div>
+        </div>
+        
+
+        <!--  D I G I T A L  S I G N A T U R E S  -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-DigitalSignatures">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-DigitalSignatures" aria-expanded="false" aria-controls="collapse-DigitalSignatures">
+                <strong>Digital signatures</strong>
+            </button>
+          </h2>
+          <div id="collapse-DigitalSignatures" class="accordion-collapse collapse" aria-labelledby="heading-DigitalSignatures" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <h6>Lets the receiver know that the data was sent by a known sender (<i>authentication</i>) and that the message was not altered during transit (<i>integrity</i>)</h6>
+
+                <br>
+
+                <h6>Digital signature signing and verification</h6>
+                <img src="CYB.ISP.2 img/PKI.png">
+            </div>
+          </div>
+        </div>
+
+
+      <h6 class="letters"> E </h6>
+      
+
+          <!--  E N C R Y P T I O N  /  C R Y P T O G R A P H Y  -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Cryptography">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Cryptography" aria-expanded="false" aria-controls="collapse-Cryptography">
+                  <strong>Encryption / cryptography</strong>
+              </button>
+            </h2>
+            <div id="collapse-Cryptography" class="accordion-collapse collapse" aria-labelledby="heading-Cryptography" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                      <h6>Refers to secure information and communication techniques derived from mathematical concepts and a set of rule-based calculations called algorithms, to transform messages in ways that are hard to decipher.</h6>
+              </div>
+            </div>
+          </div>
+
+
+          <!--  E N C R Y P T I O N  /  C R Y P T O G R A P H Y  M O D E L S  -->
+          <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-EncryptionModels">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-EncryptionModels" aria-expanded="false" aria-controls="collapse-EncryptionModels">
+                  <strong>Encryption / cryptography models</strong>
+            </button>
+          </h2>
+            <div id="collapse-EncryptionModels" class="accordion-collapse collapse" aria-labelledby="heading-EncryptionModels" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+
+                  <!--  S Y M M E T R I C   E N C R Y P T I O N  /  P R I V A T E  K E Y   M O D E L  -->
+                  <h6><strong>Symmetric encryption/ Private key model</strong></h6>
+
+                  <br>
+
+                  <h6>Requirements</h6>
+                  <ul>
+                      <li>A Private key</li>
+                      <li>Three algorithms</li>
+                      <ul>
+                          <li>A <strong>random Private key generator algorithm</strong> that generates a random key of a specified length (L): <strong>KeyGen(L) -> K</strong></li>
+                          <li>An <strong>encryption algorithm</strong> that takes the Private key (K) and the plaintext (M) and then returns a cihpertext (C): <strong>Enc(K, M) -> C</strong></li>
+                          <li>A <strong>decryption algorithm</strong> that takes the Private key (K) and the ciphertext (C) and then returns the original plaintext (M): <strong>Dec(K, C) -> M</strong></li>
+                      </ul>
+                      
+                      <br>
+
+                      <img src="CYB.ISP.2 img/symmetric_model.png">
+                  </ul>
+
+                  <br>
+
+                  <!--  A S Y M M E T R I C   E N C R Y P T I O N  /  P U B L I C  K E Y  M O D E L  -->
+                    <h6><strong>Asymmetric encryption / Public key model</strong></h6>
+
+                    <br>
+
+                      <h6>Requirements</h6>
+                      <ul>
+                      <li>A Private key and a Public key</li>
+                      <li>Four algorithms</li>
+                      <ul>
+                          <li>A <strong>random Private key generator algorithm</strong> that generates a random key of a specified length (L): <strong>KeyGen(L) -> Kₚᵣᵢᵥ</strong></li>
+                          <li>A <strong>random Public key generator algorithm</strong>  that generates a random key of a specified length (L): <strong>KeyGen(L) -> Kₚᵤb</strong></li>
+                          <li>An <strong>encryption algorithm</strong> that takes the receiver's public key (Kₚᵤb) and the sender's plaintext (M) and then returns a ciphertext (C): <strong>Enc(Kₚᵤb, M) -> C</strong></li>
+                          <li>A <strong>decryption algorithm</strong> that takes the receiver's private key (Kₚᵣᵢᵥ) and the ciphertext (C) and then returns the original plaintext (M): <strong>Dec(Kₚᵣᵢᵥ, C) -> M</strong></li>
+                      </ul>
+
+                      <br>
+
+                      <img src="CYB.ISP.2 img/asymmetric_model.png">
+                      </ul>
+
+                      <br>
+
+                      <h6>Good:</h6>
+                      <ul>
+                      <li>key management is much simpler</li>
+                      <li>Alleviates the need to share secrets before communicating between parties</li>
+                      </ul>
+                      <h6>Bad:</h6>
+                      <ul>
+                        <li>Much slower than Symmetric cryptography</li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+
+
+        <h6 class="letters"> H </h6>
+
+
+            <!--  H A S H   F U N C T I O N S  -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-HashFunctions">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-HashFunctions" aria-expanded="false" aria-controls="collapse-HashFunctions">
+                    <strong>Hash functions</strong>
+                </button>
+              </h2>
+              <div id="collapse-HashFunctions" class="accordion-collapse collapse" aria-labelledby="heading-HashFunctions" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6><strong>Hash value / digest</strong> (A fixed code sequence outputted by a hash function)</h6>
+                    
+                    <br>
+
+                    <h6><strong>Hashing</strong> (A one-way process that maps a variable-length data to a fixed-length hash)</h6>
+
+                    <br>
+
+                    <h6><strong>Hash function</strong> (An algorithm that takes a piece of data and outputs a hash value)</h6>
+                    <ul>
+                      <li>Can take data of any length as input</li>
+                      <li>Outputs a hash value of fixed-length</li>
+                      <li>Relatively easy to compute the hash function (<strong>H()</strong>), given the input (<strong>X</strong>)</li>
+                      <li>Deterministic (meaning that given the same X, we get the same H(X))</li>
+                      <li>Knowing the hash of something shouldn't give you any information about what data got put into the hash function</li>
+                    </ul>
+
+                    <br>
+
+                    <h6><strong>Hash function properties</strong></h6>
+                    <ul>
+                      <li><strong>Weak-collision resistance property</strong> - Given an input <strong>X</strong> and a hashing function <strong>H()</strong>, it's <strong>very difficult to find another input Y on which H(X) == H(Y)</strong></li>
+                      <li><strong>Strong-collision resistance property</strong> - Given a hashing function <strong>H()</strong> and two inputs <strong>X</strong> and <strong>Y</strong>, there exists an <strong>absolute minimum chance of H(X) == H(Y)</strong></li>
+                      <li><strong>One-wayness property</strong> - Hashing functions can compute hashes given the original data as input but they can't restore it back to the original data by passing its hash value through the hashing function again</li>
+                    
+                      <br>
+
+                      <ul>
+                        <li><strong>Collision</strong> - When different data inputs result in the same hash after being processed by a hashing function</li>
+                      </ul>
+                    </ul>
+                </div>
+              </div>
+            </div>
+
+
+        <h6 class="letters"> P </h6>
+
+
+          <!--  P U B L I C   K E Y   I N F R A S T R U C T U R E  -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-PublicKeyInfrastructure">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-PublicKeyInfrastructure" aria-expanded="false" aria-controls="collapse-PublicKeyInfrastructure">
+                  <strong>Public Key Infrastructure (PKI)</strong>
+              </button>
+            </h2>
+            <div id="collapse-PublicKeyInfrastructure" class="accordion-collapse collapse" aria-labelledby="heading-PublicKeyInfrastructure" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  <h6>Refers to a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public key encryption</h6>
+
+                  <br>
+
+                  <h6><strong>PKI components</strong></h6>
+                  <ul>
+                    <li><strong>Certification Authority (CA)</strong></li>
+                    <ul>
+                      <li>Responsible for issuing certificates</li>
+                    </ul>
+
+                    <br>
+
+                    <li><strong>Registration Authority (RA)</strong></li>
+                    <ul>
+                      <li>Responsible for verifying the actual identity of the individual requesting a certificate</li>
+                      <li>The type of validation depends on the type of certificate being requested</li>
+                    </ul>
+
+                    <br>
+
+                    <li><strong>Certification Repository and Revocation Information</strong></li>
+                    <ul>
+                      <li>Holds the information about which certificates are still valid</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <li><strong>Revocation</strong></li>
+                    <ul>
+                      <li>After a CA certifies a key, there may be circumstance in which we may want to invalidate a certificate</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <li><strong>Certification Revocation List (CRL)</strong></li>
+                    <ul>
+                      <li>A signed document that contains information about which certificates have been revoked</li>
+                      <li>It contains the serial number of the revoked certificate, the time of revocation and the reason for revocation, for each certificate in the list</li>
+                      <li>the CRL is signed by the CA and then released at a <strong>CRL Distribution Point (CDP)</strong></li>
+                    </ul>
+                    <img src="CYB.ISP.2 img/certificate_revocation.png">
+                    
+                    <br>
+                    
+                    <li><strong>Online Certificate Status Protocol (OCSP)</strong></li>
+                    
+                    <br>
+
+                    <li>etc.</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <!--  P U B L I C   K E Y   I N F R A S T R U C T U R E  M O D E L S   A N D   S T R U C T U R E S  -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-PublicKeyInfrastructureModelsAndStructures">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-PublicKeyInfrastructureModelsAndStructures" aria-expanded="false" aria-controls="collapse-PublicKeyInfrastructureModelsAndStructures">
+                  <strong>Public Key Infrastructure (PKI) models and structures</strong>
+              </button>
+            </h2>
+            <div id="collapse-PublicKeyInfrastructureModelsAndStructures" class="accordion-collapse collapse" aria-labelledby="heading-PublicKeyInfrastrPublicKeyInfrastructureModelsAndStructurescture" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  <h6>Simple certification</h6>
+                  <ul>
+                    <li>Having one CA that gives out certificates</li>
+                  </ul>
+                  <img src="CYB.ISP.2 img/simplepkismallcopy2.png">
+
+                  <br>
+
+                  <h6>Multi-layer certification</h6>
+                  <ul>
+                    <li>Having a Root CA that delegates trust to other CAs, who then issue certificates for others</li>
+                  </ul>
+                  <img src="CYB.ISP.2 img/multilevelpki.png">
+
+                  <br>
+
+                  <h6>Cross certification</h6>
+                  <ul>
+                    <li>Trusting one CA automatically leads to trusting the other</li>
+                  </ul>
+                  <img src="CYB.ISP.2 img/crosscertification.png">
+
+                  <br>
+
+                  <h6>Chain of trust certification structure</h6>
+                  <ul>
+                    <li>The entity receives a certificate, then goes up the chain all the way up to the Root CA to check who issued that certificate</li>
+                  </ul>
+                  <img src="CYB.ISP.2 img/trustchain.png">
+
+                  <br>
+
+                  <h6>Multiple cross certification</h6>
+                  <ul>
+                    <li>Multiple CAs can mutually cross-certify each other</li>
+                  </ul>
+                  <img src="CYB.ISP.2 img/multiplecrosscertification.png">
+
+                  <br>
+
+                  <h6>Bridge cross certification</h6>
+                  <ul>
+                    <li>One CA acts as a bridge that certifies all the other CAs, and all of the other CAs certify that one bridge</li>
+                  </ul>
+                  <img src="CYB.ISP.2 img/bridgeca.png">
+              </div>
+            </div>
+          </div>
+
+
+    <h6 class="letters"> T </h6>
+    
+        <!-- T R I P L E  D A T A   E N C R Y P T I O N   S T A N D A R D   ( T R I P L E - D E S )  -->
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="heading-TripleDES">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-TripleDES" aria-expanded="false" aria-controls="collapse-TripleDES">
+              <strong>Triple Data Encryption Standard (Triple-DES)</strong>
+          </button>
+          </h2>
+          <div id="collapse-TripleDES" class="accordion-collapse collapse" aria-labelledby="heading-TripleDES" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  <h6>A modification of DES that allows people to continue using the DES algorithm in a more secure way since the original DES has been cracked</h6>
+                  
+                  <br>
+                  
+                  <h6>Encryption</h6>
+                  <ul>
+                      <li>Triple DES encryption applies DES three times to each "block" of the message</li>
+                      <li>It takes a key bundle of 3 DES keys (<strong>K1, K2</strong> and <strong>K3</strong>) and calculates the ciphertext as such: <strong>C = Enc(K3, Enc(K2, Enc(K1, M)))</strong></li>
+                  </ul>
+
+                  <br>
+
+                  <h6>Decryption</h6>
+                  <ul>
+                      <li><strong>M = Dec(K1, Dec(K2, Dec(K3, C)))</strong></li>
+                  </ul>
+
+              </div>
+            </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+
+
+        <!--  A U T H E N T I C A T I O N  -->
+        <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-Authentication">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Authentication" aria-expanded="false" aria-controls="collapse-Authentication">
+            <strong>Authentication</strong>
+        </button>
+        </h2>
+        <div id="collapse-Authentication" class="accordion-collapse collapse" aria-labelledby="heading-Authentication" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+        
+
+        <h6 class="letters"> B </h6>
+
+
+        <!--  B I O M E T R I C S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Biometrics">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Biometrics" aria-expanded="false" aria-controls="collapse-Biometrics">
+                <strong>Biometrics</strong>
+            </button>
+            </h2>
+            <div id="collapse-Biometrics" class="accordion-collapse collapse" aria-labelledby="heading-Biometrics" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Individual physiological and/or behavioral characteristics</h6>
+
+                    <br>
+
+                    <h6>Two types of biometrics</h6>
+                    <ul>
+                        <li><strong>Physical biometrics</strong> (<i>ex: DNA, fingerprints, iris, palmprint, etc.</i>)</li>
+                        <li><strong>Behavioral biometrics</strong> (<i>ex: gait, keystrokes, signatures, multi-touch gestures, etc.</i>)</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Advantages of biometrics</h6>
+                    <ul>
+                        <li>All the users of the system have an equal level of security (<i>There's not password choice and doesn't require you to remember anything</i>)</li>
+                    </ul>
+
+                    <br>
+                    
+                    <h6>Disadvantages of biometrics</h6>
+                    <ul>
+                        <li>Speed is perceived as the biggest problem</li>
+                        <li>FMR will increase when scalling up an identification application</li>
+                        <li>Irrevocability (Unlike passwords, you can't change leaked biometric data)</li>
+
+                        <br>
+
+                        <ul>
+                          <li>To solve these limitations, we're going to use multimodal biometrical systems</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>    
+
+
+        <!--  B I O M E T R I C   H Y P O T H E S I S  T E S T I N G  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-BiometricHypothesisTesting">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-BiometricHypothesisTesting" aria-expanded="false" aria-controls="collapse-BiometricHypothesisTesting">
+                <strong>Biometric Hypothesis Testing</strong>
+            </button>
+            </h2>
+            <div id="collapse-BiometricHypothesisTesting" class="accordion-collapse collapse" aria-labelledby="heading-BiometricHypothesisTesting" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6><strong>Hypothesis testing</strong></h6>
+                    <ul>
+                      <li><strong>H0</strong> (null hypothesis): The inputted biometric measurement <strong>doesn't match</strong> the biometric data template of the person that they're trying to authenticate themselves as</li>
+                      <li><strong>H1</strong> (alternative hypothesis): The inputted biometric measurement <strong>matches</strong> the biometric data template of the person that they're trying to authenticate themselves as</li>
+                    </ul>
+
+                    <br>
+
+                    <h6><strong>Decision</strong></h6>                    
+                    <ul>
+                      <li><strong>D0</strong> (null decision): The user <strong>is not</strong> who they claim to be</li>
+                      <li><strong>D1</strong> (alternative decision): The user <strong>is</strong> who they claim to be</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Hypothesis testing formulation contains two types of errors</h6>
+                    <ul>
+                      <li>Type a - <strong>False Match</strong> (<strong>D1 when H0</strong>)</li>
+                      <li>Type b - <strong>False Non-Match</strong> (<strong>D0 when H1</strong>)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  B I O M E T R I C   M O D A L S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-BiometricModals">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-BiometricModals" aria-expanded="false" aria-controls="collapse-BiometricModals">
+                <strong>Biometric Modals</strong>
+            </button>
+            </h2>
+            <div id="collapse-BiometricModals" class="accordion-collapse collapse" aria-labelledby="heading-BiometricModals" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+
+                    <!--  U N U M O D A L   B I O M E T R I C A L   S Y S T Y E M S -->
+                    <h6><strong>Unimodal biometrical systems</strong> - Using a single biometric measurement to authenticate users</h6>
+
+                    <br>
+
+                    <!--  M U L T I M O D A L   B I O M E T R I C A L   S Y S T E M S  -->
+                    <h6><strong>Multimodal biometrical systems</strong> - The fusion of multiple biometric features together to build a more complex template and to make more accurate and efficien biometric system</h6>
+                    <ul>
+                      <li>Data fusion levels</li>
+                      
+                      <br>
+
+                      <ul>
+                          <li>Fusion at <strong>sensor level</strong></li>
+
+                          <br>
+
+                          <li>Fusion at <strong>feature level</strong></li>
+                          
+                          <br>
+
+                          <ul>
+                            <li>This combination strategy is usually done by a concatenation of the feature vectors extracted by each feature extractors</li>
+                            <li>This yields an extended size vector set</li>
+
+                            <br>
+
+                            <ul>
+                                <li>Two drawbacks</li>
+                                <ul>
+                                    <li>There is little control over the contribution of each vector component on the result</li>
+                                    <li>Both feature extractors shouold provide identical vector rates</li>
+                                </ul>
+                            </ul>
+
+                            <br>
+
+                            <li>Although it is a common belief that the earlier the combination is done, the better result is achieved, state-of-the-art data fusion relies mainly on the opinion and decision level</li>
+                          </ul>
+                          <img src="CYB.ISP.2 img/fusion-at-sensor-level.jpg">
+
+                          <br>
+
+                          <li>Fusion at <strong>opinion level</strong></li>
+
+                          <br>
+
+                          <ul>
+                              <li>The score must be adjusted first (Normalization must be done):</li>
+                              <ul>
+                                  <li>The similarity measures must be converted into distance measures</li>
+                                  <li>The score generated by each classifier must have same range</li>
+                              </ul>
+
+                              <br>
+
+                              <li>The combination strategies can be classified into three main groups</li>
+                              <ul>
+                                  <li>Fixed rules / equal weight</li>
+                                  <li>Trained rules / unequal weight</li>
+                                  <li>Adaptive rules / adaptive weight</li>
+                              </ul>
+                          </ul>                                  
+                          <img src="CYB.ISP.2 img/classifiers.jpg">
+                          <img src="CYB.ISP.2 img/fusion-at-feature-level.jpg">
+
+                          <br>
+                          
+                          <li>Fusion at <strong>decision level</strong></li>
+
+                          <br>
+
+                          <ul>
+                              <li>The Borda count method can be used for combining the classifiers' outputs (This approach overcomes the scores normalization that was mandatory for the opinion fusion level)</li>
+                              <li>One problem that appears with decision level fusion is the possibility of ties</li>
+                              <li>For verification applications, at least three classifiers are needed</li>
+
+                              <br>
+
+                              <li>An important combination scheme at the decision level is the serial and parallel combination (AND and OR combination)</li>
+                              <ul>
+                                  <li>the <strong>AND combination improves the False Acceptance Ratio</strong></li>
+                                  <li>the <strong>OR combination improves the False Rejection Ratio</strong></li>
+                              </ul>
+                          </ul>
+                          <img src="CYB.ISP.2 img/classifiers-2.jpg">
+                          <img src="CYB.ISP.2 img/fusion-at-decision-level.jpg">
+
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6><i>Multimodal biometric system example</i></h6>
+                    <img src="CYB.ISP.2 img/multimodal-biometrics-example.jpg">
+
+                    <br>
+
+                    <h6>Other multimodal biometric system facts</h6>
+                    <ul>
+                        <li>A combination of uncorrelated modalities is expected to result in a better improvement in performance</li>
+                        <li>A combination of unrelated modalities can significantly reduce the FTE rate</li>
+                        <li>However, the cost of the system may increase and the system may cause inconvience (<i>ex: one of your biometric feature inputs misclassifies for whatever reason, etc.)</i></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--  B I O M E T R I C  S Y S T E M  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-BiometricSystem">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-BiometricSystem" aria-expanded="false" aria-controls="collapse-BiometricSystem">
+                <strong>Biometric Systems</strong>
+            </button>
+            </h2>
+            <div id="collapse-BiometricSystem" class="accordion-collapse collapse" aria-labelledby="heading-BiometricSystem" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A biometric system is essentially a pattern recognition system</h6>
+
+                    <br>
+
+                    <h6>What biological measurements/features qualify to be a biometric?</h6>
+                    <ul>
+                      <li><strong>Universality</strong> (<i>Everyone must possess one</i>)</li>
+                      <li><strong>Distinctiveness</strong> (<i>It should be only limited to you</i>)</li>
+                      <li><strong>Permanence</strong> (<i>Should be the same all the time</i>)</li>
+                      <li><strong>Collectability</strong> (<i>It should be collectable</i>)</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Other issues to consider when thinking of a biometric measurement/feature to use in your biometric system</h6>
+                    <ul>
+                      <li>Performance (<i>How fast is your system?, etc.</i>)</li>
+                      <li>Acceptability (<i>How acceptable is your biometric?, etc.</i>)</li>
+                      <li>Circumvention (<i>How circumventable is your system?, etc.</i>)</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>A biometric system is designed using four main modules</h6>
+                    <ul>
+                      <li>Sensor module</li>
+                      <li>Feature module</li>
+                      <li>Matcher module</li>
+                      <li>System database module</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>A biometric system may operate either in</h6>
+                    <ul>
+                      <li><strong>Verification mode</strong> (<i>Does this biometric data belong to this person?, etc.</i>)</li>
+                      <li><strong>Identification mode</strong> (<i>Whose biometric data is this?, etc.</i>)</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Two types of biometric systems errors</h6>
+                    <ul>
+                      <li><strong>False Match</strong> - Mistaking biometric measurements from two different people to be from the same person</li>
+                      <li><strong>False Non-Match</strong> - Mistaking two biometric measurements from the same person to be from two different people</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Important specifications in a biometric system</h6>
+                    <ul>
+                        <li>False Match Rate (FMR)</li>
+                        <li>False Non-Match Rate (FNMR)</li>
+                        <li>Failure to Capture (FTC) <i>ex: faint fingerprints, etc.</i></li>
+                        <li>Failure to Enroll (FTE) <i>ex: not long enough contact with the sensor, etc.</i></li>
+                        <li>etc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  P R O T E C T I N G  B I O M E T R I C  T E M P L A T E S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-ProtectingBiometricTemplates">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-ProtectingBiometricTemplates" aria-expanded="false" aria-controls="collapse-ProtectingBiometricTemplates">
+                <strong>Protecting Biometric Templates</strong>
+            </button>
+            </h2>
+            <div id="collapse-ProtectingBiometricTemplates" class="accordion-collapse collapse" aria-labelledby="heading-ProtectingBiometricTemplates" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Template protection</h6>
+                    <ul>
+                        <li>protects the privacy and security of biometric features</li>
+                        <li>revokes and re-issues biometric templates if any leaks were to occur</li>
+                        <li>prevents linking accross databases</li>
+                        <li>allows matching in an encoded space</li>
+                        <li>etc.</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Three categories of template protection</h6>
+                    <ul>
+                        <li><strong>Straight feature protection</strong></li>
+                        <ul>
+                            <li>Protecting the original biometric features by using some one-way transformation to encrypt the data</li>
+                            <li>The matching is done in an encoded space</li>
+                        </ul>
+                        <img src="CYB.ISP.2 img/straight-feature-protection.jpg">
+
+                        <br>
+
+                        <li><strong>Key generating</strong></li>
+                        <ul>
+                            <li>The biometric data goes into a key generation or hashing algorithm and then outputs a key</li>
+                            <li>Very difficult to do since the same biometric must output the same key, meaning that you haveto ensure that your biometric systems are exact</li>
+                        </ul>
+                        <img src="CYB.ISP.2 img/key-generating.jpg">
+
+                        <br>
+
+                        <li><strong>Key binding</strong></li>
+                        <ul>
+                            <li>You generate a random key using an algorithm and you mix that key with your biometric</li>
+                            <li>The database stores a mixture of the template and the randomly generated key</li>
+                            <li>To authenticate yourself, you simply provide the biometric data that you used and the algorithm removes it from the data set, which should leave you with a key, and if you get the correct key, then you get authenticated and so on</li>
+                            <li>Irreversible</li>
+                        </ul>
+                        <img src="CYB.ISP.2 img/key-binding.jpg">
+
+                    </ul>
+
+                    <br>
+
+                    <h6>Template protection schemes</h6>
+                    <ul>
+                        <li><strong>Robust hashing</strong></li>
+                        <ul>
+                            <li>A robust hash function maps two similar inputs to the same hash values whereas inputs that are significantly apart hash to unpredictable hash values</li>
+                        </ul>
+                        <img src="CYB.ISP.2 img/robust-hashing.jpg">
+
+                        <br>
+
+                        <li><strong>Cancelable biometrics</strong></li>
+                        <img src="CYB.ISP.2 img/cancelable-biometrics.jpg">
+
+                        <br>
+                      
+                        <li><strong>Fuzzy vaults</strong></li>
+                        <ul>
+                          <li>Not specific to biometric data, but typically applied to minutiae based fingerprint matchers as a key binding biometric cryptosystem</li>
+                        </ul>
+
+                        <br>
+
+                        <h6>Encoding</h6>
+                        <img src="CYB.ISP.2 img/fuzzy-vaults-encoding.jpg">
+
+                        <br>
+
+                        <h6>Decoding</h6>
+                        <img src="CYB.ISP.2 img/fuzzy-vaults-decoding.jpg">
+
+                        <br>
+
+                        <h6>Fuzzy vaults vulnerabilities</h6>
+                        <ul>
+                            <li>Chaff Point Identification</li>
+                            <li>Improved brute force attack</li>
+                            <li>Correlation attack / Key attack</li>
+                            <li>Hill Climbing</li>
+                            <li>etc.</li>
+                        </ul>
+
+                        <br>
+                      
+                        <li><strong>Fuzzy commitments</strong> (<i>Another well known key binding approach</i>)</li>
+                        <ul>
+                          <li>Enrollment</li>
+                          <ul>
+                              <li>Commit a codeword (C), that'll act as the key, of an error correcting code using a fixed length biometric feature vector (X) as a witness</li>
+                              <li>Store a hash (h) of C as "helper data"</li>
+                              <li>Fuzzy commitment requires a fixed length feature vector representation of a biometric modality</li>
+                          </ul>
+                          <img src="CYB.ISP.2 img/fuzzy-commitment-enrollment.jpg">
+
+                          <br>
+
+                          <li>Verification</li>
+                          <img src="CYB.ISP.2 img/fuzzy-commitment-verification.jpg">
+                        </ul>
+
+                        <br>
+                      
+                        <li><strong>Fuzzy extractors</strong> (<i>A key binding cryptosystem</i>)</li>                        
+                        <ul>
+                          <li>The goal is to extract a uniformily random string (R) from its input (w) in a noise-tolerant way (If the input changes to some w', but remains close, the string (R) can still be reproduced exactly)</li>
+                          <li>An attractive proposition, but difficult due to intra-user variability</li>
+                        </ul>
+
+                        <br>
+
+                        <li>Fuzzy techniques difficulties</li>
+                        <img src="CYB.ISP.2 img/fuzzy-techniques-difficulties-1.jpg">
+                        <img src="CYB.ISP.2 img/fuzzy-techniques-difficulties-2.jpg">
+                      </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <h6 class="letters"> D </h6>
+
+
+        <!--  D I C T I O N A R Y  A T T A C K S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-DictionaryAttacks">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-DictionaryAttacks" aria-expanded="false" aria-controls="collapse-DictionaryAttacks">
+                <strong>Dictionary Attacks</strong>
+            </button>
+            </h2>
+            <div id="collapse-DictionaryAttacks" class="accordion-collapse collapse" aria-labelledby="heading-DictionaryAttacks" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A method of breaking into a password-protected computer, network or other IT resource by systematically entering every word in a dictionary or in a list as a password (Password guessing)</h6>
+                    <ul>
+                        <li>Can also be used in an attempt to find the key necessary to decrypt encrypted data</li>
+                        <li>Can be done online (harder due to the way some systems are made) and offline (Easier since there's fewer restrictions but requires access to the password storage file from the system)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+        <h6 class="letters"> K </h6>
+
+
+        <!--  K E R B E R O S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Kerberos">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Kerberos" aria-expanded="false" aria-controls="collapse-Kerberos">
+                <strong>Kerberos</strong>
+            </button>
+            </h2>
+            <div id="collapse-Kerberos" class="accordion-collapse collapse" aria-labelledby="heading-Kerberos" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A protocol used to authenticate people on a network based on tickets</h6>
+                    <ul>
+                        <li>Relies on a trusted key server, which provides centralized third-party authentication in a distributed network</li>
+                        <li>Kerberos uses a key distribution center (<strong>KDC</strong>) which contains a database of principles, which are customers and services, and encryption keys</li>
+                        <li>KDC provides an authenticated server (<strong>AS</strong>) and a ticker-generating server (<strong>TGS</strong>), which provides non-corruptable authentication credentials called tickets (or sometimes tokens)</li>
+                        <li>The access control based on this key server may be used for access to each computing resource in the network, and in either a local or remote network</li>
+                    </ul>
+                    <img src="CYB.ISP.2 img/kerberos-scheme.jpg">
+
+                    <br>
+
+                    <h6>Initial user authentication</h6>
+                    <ol>
+                        <li>The process begins when a registered user requests an initial ticket from the AS</li>
+                        <li>The AS then sends to a Ticket Granting Service (<strong>TGS</strong>) the ticketing information and returns a Ticket Generating Ticket (<strong>TGT</strong>) to the user</li>
+                        <li>The user then contacts the TGS and supplies this TGT, as well as the entity that the user wants to contact (<i>ex: a file server, etc.</i>)</li>
+                        <li>The TGS will respond with a ticket that the file server will recognize as valid and in order for this to work, the TGS needs to be aware of all of the resources available on the network or in the domain</li>
+                    </ol>
+
+                    <br>
+
+                    <h6>Attacks the Kerberos prevents</h6>
+                    <ul>
+                        <li>Imposter attacks, since Kerberos uses the user's secret key as proof of identity</li>
+                        <li>Eavesdropping and Man in The Middle attacks, since sensitive data is never sent on the network unencrypted, and the only data that touches the network unencrypted is data that's potentially already publicly known (In addition, only valid users can egnerate needed output based on their secrets)</li>
+                        <li>Replay attacks thanks to things like timestamps and lifetime fields that are present in the tickets</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Kerberos problems</h6>
+                    <ul>
+                        <li>There's a single point of failure in the KDC</li>
+                        <ul>
+                            <li>If the KDC is unavailable, then you cannot log into services on the network</li>
+                            <li>Additionally, there can be problems with the time synchronization (Since tickets only last a certain amount of time and if the time synchronization is off, users may not be allowed into a resource that they should be able to get into)</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+                
+
+        <h6 class="letters"> M </h6>
+
+
+        <!--  M U L T I - T O U C H   V E R I F I C A T I O N   S Y S T E M  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-MultiTouchVerificationSystem">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-MultiTouchVerificationSystem" aria-expanded="false" aria-controls="collapse-MultiTouchVerificationSystem">
+                <strong>Multi-Touch Verification System</strong>
+            </button>
+            </h2>
+            <div id="collapse-MultiTouchVerificationSystem" class="accordion-collapse collapse" aria-labelledby="heading-MultiTouchVerificationSystem" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Users are authenticated by performing multi-touch gestures on a device's screen</h6>
+
+                    <br>
+
+                    <h6>List of gestures</h6>
+                    <ul>
+                        <li>Static - The palm is static while performing the gesture (<i>ex: pinch, zoom, rotate, etc.</i>)</li>
+                        <li>Dynamic - The palm is moving while performing the gesture (<i>ex: dragging or swipping with all fingertipes, etc.</i></li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Enrollment stage</h6>
+                    <ul>
+                        <li>Biometric data is never identical, but similar</li>
+                        <li>One sample is not good enough to represent a person</li>
+                        <ul>
+                            <li>The solution to this would be to acquire <i>n</i> samples during an enrollment process</li>
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6>Recognition techniques</h6>
+                    <ul>
+                        <li>Data alignment (Transform the raw data into canonical format (A standard way of presenting that object as a mathematical expression)</li>
+                        <ul>
+                            <li>Fingertips data alignment example</li>
+                            <img src="CYB.ISP.2 img/data-alignment-example.jpg">
+                        </ul>
+
+                        <br>
+
+
+                        <li>Distance function (Compute distance between pairs of templates)</li>
+                        <ul>
+                            <li>Fingertips sliding distance example</li>
+                            <img src="CYB.ISP.2 img/distance-function-example.jpg">
+                        </ul>
+
+                        <br>
+
+                        
+                        <li>Dissimilarity score (Compute score between test instance and user templates)</li>
+                        <ul>
+                          <li>Decision rules</li>
+                          <img src="CYB.ISP.2 img/decision-rules.jpg">
+
+                          <br>
+
+                          <li>Verification decision</li>
+                          <img src="CYB.ISP.2 img/verification-decision.jpg">
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <h6 class="letters"> N </h6>
+
+
+        <!--  N U D G I N G  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Nudging">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Nudging" aria-expanded="false" aria-controls="collapse-Nudging">
+                <strong>Nudging</strong>
+            </button>
+            </h2>
+            <div id="collapse-Nudging" class="accordion-collapse collapse" aria-labelledby="heading-Nudging" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Using small hints to push people into the right user behavior</h6>
+                </div>
+            </div>
+        </div>
+
+
+        <h6 class="letters"> O </h6>
+
+
+        <!--  O N E - T I M E   P A S S W O R D   ( O T P )  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-OTP">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-OTP" aria-expanded="false" aria-controls="collapse-OTP">
+                <strong>One-Time Passwords (OTP)</strong>
+            </button>
+            </h2>
+            <div id="collapse-OTP" class="accordion-collapse collapse" aria-labelledby="heading-OTP" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A password that is valid for only one login session or transaction, on a computer system or other digital device</h6>
+
+                    <br>
+
+                    <h6>Types of OTP</h6>
+
+                    <br>
+
+                    <ul>
+                        <li><strong>Software OTPs</strong> (An OTP generated by the company and sent to your mobile phone or PC)</li>
+                        <ul>
+                            <li>An <strong>event based OTP</strong> (The moving factor is triggered by an event)</li>
+                        </ul>
+
+                        <br>
+
+                        <li><strong>Hardware OTPs</strong> (An OTP generated by a security device/token)</li>
+                        <ul>
+                          <li>A <strong>time based OTP</strong> (TThe moving factor is time)</li>
+                      </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6>OTP generation</h6>
+                    <img src="CYB.ISP.2 img/OTP-generation.jpg">
+
+                    <h6>OTP login session example</h6>
+                    <img src="CYB.ISP.2 img/OTP-login-session-example.jpg">
+                </div>
+            </div>
+        </div>      
+
+
+        <h6 class="letters"> P </h6>
+
+
+        <!--  P A S S W O R D S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Passwords">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Passwords" aria-expanded="false" aria-controls="collapse-Passwords">
+                <strong>Passwords</strong>
+            </button>
+            </h2>
+            <div id="collapse-Passwords" class="accordion-collapse collapse" aria-labelledby="heading-Passwords" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A secret string of characters that allows access to a computer system or service</h6>
+
+                    <br>
+
+                    <h6>Challenge Response Protocol</h6>
+                    <ol>
+                        <li>The user provides an identity</li>
+                        <li>A challenge is provided by the verifier (<i>ex: They ask the user for a password, etc.</i>)</li>
+                        <li>The verifier puts the answer to the challenge (<i>ex: The proposed password given in plaintext</i>) through a hash function and checks to see if the hashes match, and if so then access is granted</li>
+                    </ol>
+
+                    <br>
+
+                    <ul>
+                        <li>Cons</li>
+                        <ul>
+                            <li>Dictionary Attacks</li>
+                            <li>Rainbow Tables</li>
+
+                            <br>
+
+                            <ul>
+                                <li>One way of defending against these attacks is by using Salts</li>
+                                <li>Another way is to nudge users to obey password policies</li>
+                            </ul>
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6>Password usabilities</h6>
+                    <ul>
+                        <li>nothing-to-carry</li>
+                        <li>physically effortless</li>
+                        <li>easy-to-learn</li>
+                        <li>easy-recover-from-loss</li>
+                        <li>etc.</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Password security properties</h6>
+                    <ul>
+                        <li>Resilient-to-physical-observation</li>
+                        <li>Resilient-to-targeted-impersonation</li>
+                        <li>Resilient-to-theft</li>
+                        <li>Resilient-to-phishing</li>
+                        <li>Resilient-to-internal-obersvation</li>
+                        <li>Resilient-to-leaks-from-other-verifiers</li>
+                        <li>Unlinkable</li>
+                        <li>etc.</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Password deployability</h6>
+                    <ul>
+                        <li>Accessible</li>
+                        <li>Server compatible</li>
+                        <li>Browser compatible</li>
+                        <li>Mature</li>
+                        <li>etc.</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Other types of passwords</h6>
+                    <ul>
+                        <li>Graphical passwords</li>
+                        <ul>
+                            <li>Three different approaches</li>
+                            <ul>
+                                <li>Recognition based</li>
+                                <li>Pure recall based</li>
+                                <li>Cued recall based</li>
+                            </ul>
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <img src="CYB.ISP.2 img/password-hashes.jpg">
+                </div>
+            </div>
+        </div>
+        
+
+        <h6 class="letters"> R </h6>
+
+
+        <!--  R A I N B O W  T A B L E S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-RainbowTables">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-RainbowTables" aria-expanded="false" aria-controls="collapse-RainbowTables">
+                <strong>Rainbow Tables</strong>
+            </button>
+            </h2>
+            <div id="collapse-RainbowTables" class="accordion-collapse collapse" aria-labelledby="heading-RainbowTables" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A precomputed table for catching the output of cryptographic hash functions, usually for cracking password hashes</h6>
+                    <ul>
+                        <li>Precomputed Hash chains</li>
+                        <li>Hash and reduce</li>
+                        <ul>
+                            <li>The hashing function of a given set of Rainbow Tables must match the hatched password you want to recover</li>
+                            <li>The reduction function of a given set Rainbow Tables must tranform a hash into something usable as a password</li>
+                        </ul>
+                        <li>Rainbow Tables are constructed of "chains" of a <i>n</i> length</li>
+                        <ul>
+                            <li>You start the chain by picking a random seed value</li>
+                            <li>Then apply the hashing and reduction functions to this seed, and its output, and continue iterating this <i>n</i> times</li>
+                            <li>Each link in the chain is compared with the final value of each chain and if there's a match, the chain can be reconstructed, keeping both the output of each reduction function</li>
+                            <li>That reconstructed chain will conatin the hash of the password in question as well as the password that produced it</li>
+                        </ul>
+                        <img src="CYB.ISP.2 img/rainbow-tables-algorithm-followed.jpg">
+                    </ul>
+
+                    <br>
+
+                    <h6>example</h6>
+                    <img src="CYB.ISP.2 img/rainbow-tables-example.jpg">
+                </div>
+            </div>
+        </div>        
+
+
+        <h6 class="letters"> S </h6>
+
+
+        <!--  S A L T S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Salts">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Salts" aria-expanded="false" aria-controls="collapse-Salts">
+                <strong>Salts</strong>
+            </button>
+            </h2>
+            <div id="collapse-Salts" class="accordion-collapse collapse" aria-labelledby="heading-Salts" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Adding a random value to a plaintext password before putting it through the hashing process</h6>
+                    <ul>
+                        <li>Adding a random value makes it so that attacks that rely on pre-computation can no longer pre-compute the hashes in order to look through leaked databases to determine what password is what</li>
+                        <li>It also makes pre-computation impossible without brute forcing any and all possible random salts</li>
+                        <li>For password verification, the verifier will simply take the password provided by the user, add a Salt, put it through the hashing process, take the stored hash and see if they match</li>
+                    </ul>
+
+                    <br>
+
+                    <img src="CYB.ISP.2 img/salts.jpg">
+                </div>
+            </div>
+        </div>
+        
+
+        <h6 class="letters"> T </h6>
+
+
+        <!--  T O K E N S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Tokens">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Tokens" aria-expanded="false" aria-controls="collapse-Tokens">
+                <strong>Tokens</strong>
+            </button>
+            </h2>
+            <div id="collapse-Tokens" class="accordion-collapse collapse" aria-labelledby="heading-Tokens" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Hardware that contains a cryptographic key used for authentication</h6>
+
+                    <br>
+
+                    <h6>Types of tokens</h6>
+                    <ul>
+                        <li>Hard Token</li>
+                        <li>Soft Token</li>
+                        <li>USB Token</li>
+                        <li>Smart Card</li>
+                        <li>Mobile Token</li>
+                        <ul>
+                            <li>uses</li>
+                            <ul>
+                                <li>an application installed on the user's device</li>
+                                <li>IMEI (Internation Mobile Equipment Identity) number, which is a 15-digit number unique to each device</li>
+                                <li>Time Stamp (<i>ex: a new seed number every 30 seconds, etc.</i>)</li>
+                                <li>Seed (the number that the token is giving you at a given point)</li>
+                            </ul>
+                        </ul>
+                        <li>etc.</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Tokens can be used for</h6>
+                    <ul>
+                        <li>generating OTPs</li>
+                        <li>etc.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  T Y P E S  O F  A U T H E N T I C A T I O N  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-TypesOfAuthentication">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-TypesOfAuthentication" aria-expanded="false" aria-controls="collapse-TypesOfAuthentication">
+                <strong>Types of Authentication</strong>
+            </button>
+            </h2>
+            <div id="collapse-TypesOfAuthentication" class="accordion-collapse collapse" aria-labelledby="heading-TypesOfAuthentication" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Authentication is the act of proving one's identity to another entity</h6>
+                    <ul>
+                        <li>Something you <strong>know</strong> (<i>Passwords, PINs, etc.</i>)</li>
+                        <li>Something you <strong>have</strong> (<i>Hardware, software, devices, etc.</i>)</li>
+                        <li>Something you <strong>are</strong> (<i>Biometrics</i>)</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--  T W O   F A C T O R   A U T H E N T I C A T I O N  ( 2 F A )  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-2FA">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2FA" aria-expanded="false" aria-controls="collapse-2FA">
+                <strong>Two Factor Authentication (2FA)</strong>
+            </button>
+            </h2>
+            <div id="collapse-2FA" class="accordion-collapse collapse" aria-labelledby="heading-2FA" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>It's an approach to authentication which requires the presentation of two different kinds of evidence that someone is who they say they are (<i>ex: Something you know + Something you have</i>)</h6>
+                
+                    <br>
+
+                    <h6>2FA using a Hard Token example</h6>
+                    <img src="CYB.ISP.2 img/2FA-token-usage-example.jpg">
+                  </div>
+            </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!--  A C C E S S   C O N T R O L   ( 1 ) :   O P E R A T I N G   S Y S T E M S   A N D   P H O N E S  -->
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-AccessControlPartOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-AccessControlPartOne" aria-expanded="false" aria-controls="collapse-AccessControlPartOne">
+            <strong>Access Control (1): Operating Systems and Phones</strong>
+        </button>
+    </h2>
+    <div id="collapse-AccessControlPartOne" class="accordion-collapse collapse" aria-labelledby="heading-AccessControlPartOne" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+
+
+        <h6 class="letters"> A </h6>
+
+
+        <!--  A C C E S S  C O N T R O L  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-AccessControl">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-AccessControl" aria-expanded="false" aria-controls="collapse-AccessControl">
+                <strong>Access Control</strong>
+            </button>
+            </h2>
+            <div id="collapse-AccessControl" class="accordion-collapse collapse" aria-labelledby="heading-AccessControl" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>Defined as a series of mechanisms to specify what users do, which resources they can access, and what operations they can perform on a system, as well as identifying users by verifying various login credentials</h6>
+                    <ul>
+                        <li>It also allows managers of a system to direct or restrain the behavior, use and content of a system</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>Access control has three main functions</h6>
+                    <ul>
+                        <li><strong>Identification</strong></li>
+                        <ul>
+                            <li>A method of establishing the subject's identity (<i>ex: usernames, user IDs, etc.</i>)</li>
+                            <li>The method usually should be non-descriptive of the user's position or task</li>
+                        </ul>
+
+                        <br>
+
+                        <li><strong>Authentication</strong></li>
+                        <ul>
+                            <li>A method of providing the claimed identity of an entity that has previously identified itself</li>
+                        </ul>
+
+                        <br>
+
+                        <li><strong>Authorization</strong></li>
+                        <ul>
+                            <li>A process that determines what level of clearance and access that the authenticated user has within the system and data that they requested to log into to or gain access</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <!--  A C C E S S  C O N T R O L  F O R M S  ( A C F ) -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-AccessControlForms">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-AccessControlForms" aria-expanded="false" aria-controls="collapse-AccessControlForms">
+                  <strong>Access Control Forms (ACF)</strong>
+              </button>
+            </h2>
+            <div id="collapse-AccessControlForms" class="accordion-collapse collapse" aria-labelledby="heading-AccessControlForms" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                    <h6>Used to request and change access responsibilities</h6>
+
+                    <br>
+
+                    <h6>Fundamental ACFs</h6>
+                    <ul>
+                        <li><strong>Discretionary Access Control</strong> (DAC)</li>
+                        <ul>
+                            <li>A system that uses descretionary access control allows the owner of the resource to specify which subjects can access which resources (<strong>Access control is at the discretionary of the owner of the resource</strong>)</li>
+                        </ul>
+
+                        <br>
+
+                        <li><strong>Mandatory Access Control</strong> (MAC)</li>
+                        <ul>
+                            <li>Access is based on a <strong>security labeling system</strong>, meaning users have security clearances and resource have security labels that conatin data classifications</li>
+                            <li>This model is used in environments where information classification and confidentiality is very important</li>
+                        </ul>
+
+                        <br>
+
+                        <li><strong>Non-Discretionary Role Based Access Control</strong> (RBAC)</li>
+                        <ul>
+                            <li>Uses a centrally administered set of controls to determine how subjects and objects interact</li>
+                            <li>It is the best know system for an organization that has high turnover</li>
+                        </ul>
+                    </ul>
+              </div>
+            </div>
+          </div>
+
+        
+            <!--  A C C E S S  C O N T R O L  M E C H A N I S M S  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-AccessControlMechanisms">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-AccessControlMechanisms" aria-expanded="false" aria-controls="collapse-AccessControlMechanisms">
+                      <strong>Access Control Mechanisms</strong>
+                  </button>
+                </h2>
+                <div id="collapse-AccessControlMechanisms" class="accordion-collapse collapse" aria-labelledby="heading-AccessControlMechanisms" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>Takes as input security policies and attempted actions, and outputs an accept or reject response on that action</h6>
+                        <ul>
+                            <li>The security policy that goes into an access control mechanism defines what a subject (An entity that's requesting access) is allowed to do, and/or what may be with an object (<i>ex: data files, software, hardware, device, etc. that may contain important data, etc.</i>)</li>
+                        </ul>
+
+                        <br>
+
+                        <h6>Access control mechanism examples</h6>
+                        <ul>
+                            <li><strong>Role Based Access Control</strong> (RBAC)</li>
+                            <ul>
+                                <li>RBAC uses a centrally administered set of controls to make access control decisions</li>
+                                <li>In a given organization, subjects can have one or more roles, as well as share roles with other subjects, and these roles come with tasks that they must perform</li>
+                                <li>A subject in a given role requires access to certain objects in order to complet their tasks</li>
+                                <ul>
+                                    <li>Therefore, in this access control method, the role or roles that a subject is assigned matters more in access conitrol decisions than their identity</li>
+                                    
+                                </ul>
+                                <li>RBAC is ideal for institutions that experience a lot of churn and internal movements, since roles can provide a way to reassign authorization to objects very quickly</li>
+                            </ul>
+
+                            <br>
+
+                            <li><strong>Content Dependent Access Control</strong> (CDAC)</li>
+                            <ul>
+                                <li>A method of performing access control based on the type of content contained in an object</li>
+                                <li>Access control decisions are content dependent</li>
+                            </ul>
+
+                            <br>
+                            
+                            <li><strong>Context Based Access Control</strong> (CBAC)</li>
+                            <ul>
+                                <li>An access control method based on the context of a subject's request to an object</li>
+                                <li>This method requires more information in order to make a decision (<i>ex: the subject's identity, the object that they're requesting access to, the object's content type, etc.</i>)</li>
+                            </ul>
+
+                            <br>
+                            
+                            <li><strong>Constrained User Interfaces</strong> (CUI)</li>
+                            <ul>
+                                <li>A method of enforcing access control by constraining the user interface used to get access</li>
+                                <ul>
+                                    <li>This can be done by not allowing certain types of acces on the interface, or not including the ability to request certain types of access or objects</li>
+                                </ul>
+
+                            <br>
+
+                                <li>Three major types of constrained UIs</li>
+                                <ul>
+                                    <li>Menus and shells</li>
+                                    <li>Database views</li>
+                                    <li>Physically constrained interfaces</li>
+                                </ul>
+                            </ul>
+
+                            <br>
+                            
+                            <li><strong>Access Control Matrix</strong> (ACM)</li>
+                            <ul>
+                                <li>A method used to represent permissions and privileges within a system through a table of subjects and objects</li>
+                                <ul>
+                                    <li>Every row represents different subjects</li>
+                                    <li>Every column represents different objects</li>
+                                    <ul>
+                                        <li>Subjects in a system can also be accessed as an object and in order to do this, subjects that can be accessed by other subjects must also be listed as an object</li>
+                                    </ul>
+                                    <li>Every other individual cells specify what the access rights are (<strong>read</strong>, <strong>write</strong>, <strong>execute</strong>, <strong>append</strong> and <strong>own</strong>)</li>
+                                </ul>
+
+                                <br>
+                                
+                                <li>Example</li>
+                                <img src="CYB.ISP.2 img/ACM-example.jpg">
+
+                            <br>
+
+                                <li>Cons</li>
+                                <ul>
+                                    <li>ACMs can grow very large very quickly (Solution: ACLs)</li>
+                                </ul>
+                            </ul>
+
+                            <br>
+                            
+                            <li><strong>Access Control Lists</strong> (ACL)</li>
+                            <ul>
+                                <li>A set of permissions that correspond to an object</li>
+                                <ul>
+                                    <li>Each permission usually specifies a subject and an access right to the object</li>
+                                </ul>
+
+                                <br>
+
+                                <li>Example</li>
+                                <img src="CYB.ISP.2 img/ACL-example.jpg">
+                            </ul>
+
+                            <br>
+                            
+                        </ul>
+                  </div>
+                </div>
+              </div>
+
+        
+            <!--  A C C E S S  C O N T R O L  M O D E L S  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-AccessControlModels">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-AccessControlModels" aria-expanded="false" aria-controls="collapse-AccessControlModels">
+                      <strong>Access Control Models</strong>
+                  </button>
+                </h2>
+                <div id="collapse-AccessControlModels" class="accordion-collapse collapse" aria-labelledby="heading-AccessControlModels" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>Models that help achieve access control</h6>
+                        <ul>
+                            <li>One thing they almost all have in common is that they all have a Reference Monitor</li>
+                        </ul>
+                  </div>
+                </div>
+              </div>
+
+
+            <h6 class="letters"> I </h6>
+
+
+            <!--  I N O D E  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-Inode">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Inode" aria-expanded="false" aria-controls="collapse-Inode">
+                      <strong>Inode</strong>
+                  </button>
+                </h2>
+                <div id="collapse-Inode" class="accordion-collapse collapse" aria-labelledby="heading-Inode" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>A structure used to store UNIX permissions</h6>
+                        <ul>
+                            <li>The permissions are stored as ACLs</li>
+                            <li>Also stores other information about a file, such as</li>
+                            <ul>
+                                <li>the user who owns it (Owner)</li>
+                                <li>the group who owns it</li>
+                                <li>the time it was last accessed</li>
+                                <li>the time it was last modified</li>
+                                <li>the time the inode was last modified</li>
+                                <li>the size of the file</li>
+                                <li>the location of the file</li>
+                            </ul>
+                        </ul>
+                  </div>
+                </div>
+              </div>
+
+
+            <h6 class="letters"> O </h6>
+
+
+            <!--  O S  M E C H A N I S M S :   A N D R O I D  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-Android">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Android" aria-expanded="false" aria-controls="collapse-Android">
+                      <strong>OS Mechanisms: Android</strong>
+                  </button>
+                </h2>
+                <div id="collapse-Android" class="accordion-collapse collapse" aria-labelledby="heading-Android" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+
+                      <h6>Android architecture</h6>
+                      <img src="CYB.ISP.2 img/android-architecture.png">
+
+                      <br>
+
+                      <ul>
+                          <li><strong>Applications</strong></li>
+                          <li><strong>Application frameworks</strong></li>
+                          <li><strong>Libraries</strong></li>
+                          <li><strong>Android runtime</strong></li>
+                          <li><strong>Linux kernel</strong></li>
+                      </ul>
+
+                      <br>
+
+                      <h6>Android access model</h6>
+                      <ul>
+                          <li>Single-user devices have a different access control focus than multi-user devices</li>
+                          <li>Assuming that a device has only one user allows the access control mechanism to focus on isolating applications form each other, called <strong>Sandboxing</strong></li>
+                          <ul>
+                              <li>A Sandbox is a virtual machine that runs as a seperate UID from a Linux perspective (<i>Remember that there's a Linux kernel at the bottom of the Android architecture</i>)</li>
+                              <li>so now, rather that each user running all their apps with the same permissions, now every app runs with its own set of permissions on your Android phone</li>
+                              <ul>
+                                  <li>Each application has its own unique UID, and communicattes with data or resources on the system through a Reference Monitor and through Android middleware that eventually translates down into a Linux kernel</li>
+                              </ul>
+
+                              <br>
+
+                              <img src="CYB.ISP.2 img/android-access-model.png">
+                          </ul>
+                      </ul>
+
+                      <br>
+
+                      <h6><strong>Android manifest file</strong></h6>
+                      <ul>
+                          <li>Allows developpers to define an access control policy for access to components</li>
+                          <ul>
+                              <li>Each component can be assigned an access permission label</li>
+                              <li>Each application requests a list of permission labels (fixed at install time)</li>
+                          </ul>
+
+                          <br>
+
+                          <li><i>Example</i></li>
+                          <img src="CYB.ISP.2 img/android-security-model.png">
+                      </ul>
+                  </div>
+                </div>
+              </div>
+        
+
+            <!--  O S  M E C H A N I S M S :  M U L T I C S  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-MULTICS">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-MULTICS" aria-expanded="false" aria-controls="collapse-MULTICS">
+                      <strong>OS Mechanisms: MULTICS</strong>
+                  </button>
+                </h2>
+                <div id="collapse-MULTICS" class="accordion-collapse collapse" aria-labelledby="heading-MULTICS" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>A <strong>time-sharing operating system</strong> that allowed multiple Processes to use the same machine all at once, which meant that no one could not make simple assumptions about one Process not being able to access the memory or state of another</h6>
+
+                        <ul>
+                            <li>No longer in use today</li>
+                            <li>Demonstrates how different processes could be stopped from bypassing access control by using a few security designs:</li>
+
+                            <br>
+
+                            <ul>
+                                <li>Virtual memory</li>
+
+                                <br>
+
+                                <li>Ring structure</li>
+                                <ul>
+                                    <li>Rings were domains in which a Process executes in</li>
+                                    <li>Rings were numbered and the lower the number (0 being the lowest), the more privileges the Process had</li>
+                                    <li>Every Process had all the privileges of every ring numbered above the ring it was executing in (<i>ex: A Process in ring 1 would have all the privileges in ring 1, as well as the privileges in ring 2, 3, and so on</i>)</li>
+                                </ul>
+
+                                <br>
+                        
+                                <li>Segments</li>
+                                <ul>
+                                    <li>Segments were data and text areas within a program that you could call into</li>
+                                    <li>Subjects could not call into the middle of a segment, but instead they would call a segment at a restricted segment entry point</li>
+                                    <ul>
+                                        <li>This was to avoid the issue of subjects jumping into the middle of a segment, past the portions of code that handled the acess control, in order to ensure that they weren't granted unauthorized access</li>
+                                    </ul>
+                                </ul>
+
+                                <br>
+                        
+                                <li>Channels</li>                      
+                            </ul>
+                        </ul>
+
+                        <br>
+
+                        <h6>Pros</h6>
+                        <ul>
+                            <li>was written using a high-level language</li>
+                            <li>useds a share memory multiprocessor</li>
+                        </ul>
+
+                        <br>
+
+                        <h6>Cons</h6>
+                        <ul>
+                            <li>was the first successful operating system to have security as a consideration from the beggining, it had issues and turned out to be unweildy to use in practice, which lead to the creation of UNIX</li>
+
+                        </ul>
+                  </div>
+                </div>
+              </div>
+
+                      
+            <!--  O S  M E C H A N I S M S :  U N I X  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-UNIX">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-UNIX" aria-expanded="false" aria-controls="collapse-UNIX">
+                      <strong>OS Mechanisms: UNIX</strong>
+                  </button>
+                </h2>
+                <div id="collapse-UNIX" class="accordion-collapse collapse" aria-labelledby="heading-UNIX" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>It's the modern successor to MULTICS and a multiuser, multitasking OS designed for flexibility and adaptability</h6>
+                  
+                        <br>
+
+                        <h6>UNIX is composed of:</h6>
+
+                        <br>
+
+                        <ul>
+                            <li><strong>Users</strong></li>
+                            <ul>
+                                <li>Each user has a user ID (<strong>UID</strong>), which is a uniquely identifying number that is linked to their username</li>
+                                <li>In addition to each normal user, there are a few other special user accounts</li>
+                                <ul>
+                                    <li><strong>Root</strong>, which has a UID of 0 and can do almost anything in the system</li>
+                                    <li><strong>Owner</strong>, which is the user who owns the data, where ownership gives you certain permissions</li>
+                                    <li><strong>daemon</strong> / <strong>sys</strong>, which handles some important services</li>
+                                    <li><strong>Guest</strong>, which is used for site visitors</li>
+                                    <li>FTP</li>
+                                    <li>UUP</li>
+                                    <li>LP</li>
+                                    <li>etc.</li>
+                                </ul>
+                            </ul>
+
+                            <br>
+
+                            <li><strong>Groups</strong></li>
+                            <ul>
+                                <li>Each group has a unique Group ID (GID) and are useful for access control feature, since they follow an easy way to quickly apply some coarse access control rules to users</li>
+                                <li>Each user in a system belongs to at lest one group</li>
+                                <li>In addition to normal groups, we also have a few other special groups</li>
+                                <ul>
+                                    <li><strong>"Wheel" group</strong>, which is the group of system administrators</li>
+                                    <li>UUCP</li>
+                                    <li>LP</li>
+                                    <li>etc.</li>
+                                </ul>
+                            </ul>
+
+                            <br>
+                            
+                            <li><strong>Permissions</strong></li>
+                            <ul>
+                                <li><strong>read</strong></li>
+                                <li><strong>write</strong></li>
+                                <li><strong>execute</strong></li>
+
+                                <br>
+
+                                <li>UNIX has three categories of subjects that you need to specify permissions to</li>
+                                <ul>
+                                    <li><strong>Owner</strong></li>
+                                    <li><strong>Group</strong></li>
+                                    <li><strong>Other</strong> (Everyone else in the system)</li>
+                               
+                                    <br>
+
+                                    <ul>
+                                        <li>The only people who can change these permissions are the Owner and the Root</li>
+                                        <li>UNIX permissions are stored as ACLs in a structure called an <strong>inode</strong></li>
+                                    </ul>
+                                </ul>
+
+                                <br>
+
+                                <li>Permissions can be stored in</li>
+                                
+                                <br>
+
+                                <ul>
+                                    <li><strong>Octal format</strong></li>
+                                    <ul>
+                                        <li><strong>0</strong> - No permissions at all</li>
+                                        <li><strong>1</strong> - execute</li>
+                                        <li><strong>2</strong> - write</li>
+                                        <li><strong>4</strong> - read</li>
+
+                                        <br>
+
+                                        <ul>
+                                            <li>Example:</li>
+                                            <ul>
+                                                <li><i>The owner can read, write and execute: 1 + 2 + 4 = 7</i></li>
+                                                <li><i>The group can read and write: 2 + 4 = 6</i></li>
+                                                <li><i>The others can't do anything: 0</i></li>
+                                                <li><i>The final octal representation of this example: 0760</i></li>
+                                            </ul>
+                                        </ul>
+                                    </ul>
+
+                                    <br>
+                                    
+                                    <li><strong>Letters</strong> and <strong>dashes</strong></li>
+                                    <ul>
+                                        <li><strong>- --- --- ---</strong></li>
+                                        <ul>
+                                            <li>The first <i>-</i> represents the type of object</li>
+                                            <li>The first group of <i>---</i> represents the permissions given to the owner</li>
+                                            <li>The second group of <i>---</i> represents the permissions given to the group</li>
+                                            <li>The last group of <i>---</i> represents the permissions given to others</li>
+
+                                            <br>
+
+                                            <ul>
+                                                <li>Example:</li>
+                                                <ul>
+                                                    <li><i>the owner has read, write and execute permissions</i></li>
+                                                    <li><i>the group has read and write permissions</i></li>
+                                                    <li><i>the others have no permissionos</i></li>
+                                                    <li><i>The final representation of this example: - rwx rw- ---</i></li>
+                                                </ul>
+                                            </ul>
+                                        </ul>
+                                    </ul>                  
+                                </ul>
+                            </ul>
+                        </ul>
+
+                        <br>
+
+                        <h6></h6>
+                  </div>
+                </div>
+              </div>
+
+
+              <!--  O S  M E C H A N I S M S :   W I N D O W S   ( N T F S + )  -->
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading-Windows">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Windows" aria-expanded="false" aria-controls="collapse-Windows">
+                        <strong>OS Mechanisms: Windows (NTFS+)</strong>
+                    </button>
+                  </h2>
+                  <div id="collapse-Windows" class="accordion-collapse collapse" aria-labelledby="heading-Windows" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                          <ul>
+                              <li>In general, Windows permissions are more flexible than UNIX permissions, and offer explicit denies and explicit permissions for deletion of objects</li>
+                              <ul>
+                                  <li>Windows partial administrator access can be given, which is different from UNIX</li>
+                              </ul>
+
+                              <br>
+
+                              <li>Subjects are defined using a <strong>security ID</strong> (SID)</li>
+                              <ul>
+                                  <li>In addition to storing the SID, Windows also stores a <strong>revision number</strong> for this value, and a 48-bit authority value</li>
+                              </ul>
+                          </ul>
+
+                          <br>
+
+                          <h6>Windows access control and permissions are implemented as ACLs that specify permissions based on the user and the group</h6>
+                          <ul>
+                              <li>Their ACLs includes:</li> 
+                              <ul>
+                                  <li>the security identifier of the entity that owns the object</li> 
+                                  <li>the regular ACL for access permissions</li> 
+                                  <li>a system ACL that is used for auditing</li> 
+                                  <li>A group security identifier</li>
+                              </ul>
+
+                              <br>
+
+                              <li>Each of these ACLs is compromised of an <strong>Access Control Entity</strong> (ACE), which is compromised of basic permissions such as</li>
+                              <ul>
+                                  <li><strong>r</strong>ead</li>
+                                  <li><strong>w</strong>rite</li>
+                                  <li><strong>e</strong>xecute</li>
+                                  <li><strong>d</strong>elete</li>
+                                  <li>change access <strong>p</strong>ermissions</li>
+                                  <li>take <strong>o</strong>wnership</li>
+                              </ul>
+
+                              <br>
+
+                              <li>There are several types of ACEs</li>
+                              <ul>
+                                  <li><strong>Access-allowed</strong> ACEs, which allows access rights</li>
+                                  <li><strong>Access-denied</strong> ACEs, which explicitly deny access rights</li>
+                                  <ul>
+                                      <li>Access-denied ACEs always take precedence over access-allowed ACEs, meaning that if a subject is part of a group that is explicitly denied access, they will not be able to read the file, even if their user account is given explicit allow access</li>
+                                  </ul>
+                                  <li><strong>System audit</strong> ACEs, which are used in ACLs to generate an audit record when the trustee attemps to exercise the specific access rights</li>
+                              </ul>
+                          </ul>
+
+                          <br>
+
+                          <h6>Windows permission inheritance</h6>
+                          <ul>
+                              <li>When a child object is created, it inherits the properties of the parents, and the children and parents remain linked</li>
+                              <li>Whenever a parent's permissions are changed, the children are updated to have the same permissions as well</li>
+
+                              <br>
+
+                              <ul>
+                                  <li>Permission inheritance can be sometimes confusing when trying to figure out a child object's permissions inside of a large system, since you'd have to go find and look at its parent object's permissions in order to do so</li>
+                              </ul>
+                          </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+            <h6 class="letters"> R </h6>
+
+
+            <!--  R E F E E R E N C E   M O N I T O R  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-ReferenceMonitor">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-ReferenceMonitor" aria-expanded="false" aria-controls="collapse-ReferenceMonitor">
+                      <strong>Reference Monitor</strong>
+                  </button>
+                </h2>
+                <div id="collapse-ReferenceMonitor" class="accordion-collapse collapse" aria-labelledby="heading-ReferenceMonitor" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>A secure, always-used and fully testable module that controls all access to data objects and devices</h6>
+                        <ul>
+                            <li>It verifies the nature of the request against a table of allowable access types for each process in the system</li>
+                            <li>If it's possible to bypass the Reference Monitor, then there exists an avenue for attackers to attempt to bypass all access control</li>
+                        </ul>
+
+                        <br>
+
+                        <img src="CYB.ISP.2 img/reference-monitor.jpg">
+                        <ul>
+                            <ul>
+                                <li>you have some security policy that you specify</li>
+                                <li>you have subjects that makes requests that relate to objects (data files, devices, etc.)</li>
+                                <li>you have a system called a Reference Monitor, which will make decisions, based on the specified policies, to either grant requests or deny them</li>
+                            </ul>
+                        </ul>
+                  </div>
+                </div>
+              </div>
+
+
+            <h6 class="letters"> S </h6>
+
+
+            <!--  S E T U I D  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-Setuid">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Setuid" aria-expanded="false" aria-controls="collapse-Setuid">
+                      <strong>Setuid (Set User ID)</strong>
+                  </button>
+                </h2>
+                <div id="collapse-Setuid" class="accordion-collapse collapse" aria-labelledby="heading-Setuid" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>A special type of file permission in Unix and Unix-like operating systems (<i>ex: Linux, BSD, etc.</i>) that permits users to run certain programs with escalated privileges</h6>
+                        <ul>
+                            <li>This is done with the help different user IDs</li>
+                        </ul>
+
+                        <br>
+
+                        <h6>Types of IDs</h6>
+                        <ul>
+                            <li><strong>RUID</strong> (Real User ID) - Used for accounting our overall system to help understand what's happening within a system</li>
+                            <li><strong>EUID</strong> (Effective User ID) - Used to look at what permissions you're supposed to have for the operations that you're doing within a system</li>
+                            <li><strong>SUID</strong> (Saved User ID) - Used to store original user IDs so that you can later restore and revert a process back to its original user ID</li>
+                            <li>etc.</li>
+                        </ul>
+
+                  </div>
+                </div>
+              </div>
+
+
+              <h6 class="letters"> U </h6>
+  
+  
+              <!--  U S E R  F I L E - C R E A T I O N  M O D E  M A S K  -->
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading-Umask">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Umask" aria-expanded="false" aria-controls="collapse-Umask">
+                        <strong>User File-Creation Mode Mask (umask)</strong>
+                    </button>
+                  </h2>
+                  <div id="collapse-Umask" class="accordion-collapse collapse" aria-labelledby="heading-Umask" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                          <h6>A four-digit octal number that UNIX uses to determine the file permission for newly created files</h6>
+                          <ul>
+                              <li>Specifies the permissions that you do not want given by default to newly created files and directories</li>
+                              <li>It works by doing a bitwise AND with the bitwise complement of the umask (Bits that are set in the umask correspond to permissions that are not automatically assigned to newly created files)</li>
+
+                              <br>
+
+                              <ul>
+                                  <li><i>Example: 0666</i></li>
+                              </ul>
+                          </ul>
+                    </div>
+                  </div>
+                </div>
+
+
+                <h6 class="letters"> W </h6>
+
+              
+                <!--  W I N D O W S  A C C E S S  T O K E N S  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-WindowsAccessTokens">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-WindowsAccessTokens" aria-expanded="false" aria-controls="collapse-WindowsAccessTokens">
+                          <strong>Windows Access Tokens</strong>
+                      </button>
+                    </h2>
+                    <div id="collapse-WindowsAccessTokens" class="accordion-collapse collapse" aria-labelledby="heading-WindowsAccessTokens" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                            <h6>Used by a program to adopt a set of permissions from another user</h6>
+                            <ul>
+                                <li>Used to firgure out who the user is</li>
+                                <li>Provide contextual information</li>
+                            </ul>
+                            
+                            <br>
+  
+                            <h6>There are four types of access tokens</h6>
+                            <ul>
+                                <li><strong>Anonymous</strong></li>
+                                <li><strong>Identification</strong></li>
+                                <li><strong>Impersonation</strong></li>
+                                <li><strong>Delegation</strong></li>
+                            </ul>
+  
+                            <br>
+  
+                            <h6>Access tokens are used in accordance to security descriptors, which contain the security information associated with a securable object (The set of information requires for the authorization of access, the policies that are going to get enforced by the Reference Monitor within the system, the ACLs associated with an object, as well as ownership information, group information, revision numbers, etc.)</h6>
+                            <ul>
+                                <li>Used to decide who is able to do what</li>
+                            </ul>
+  
+                            <br>
+  
+                            <img src="CYB.ISP.2 img/access-token.jpg">
+                      </div>
+                    </div>
+                  </div>
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <!--  A C C E S S   C O N T R O L   ( 2 ) :  I F C ,  O - C A P  -->
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="heading-AccessControlPartTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-AccessControlPartTwo" aria-expanded="false" aria-controls="collapse-AccessControlPartTwo">
+            <strong>Access Control (2): IFC, O-Cap</strong>
+        </button>
+    </h2>
+    <div id="collapse-AccessControlPartTwo" class="accordion-collapse collapse" aria-labelledby="heading-AccessControlPartTwo" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+
+
+        <h6 class="letters"> C </h6>
+        
+
+        <!--  C A P A B I L I T I E S  -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading-Capabilties">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Capabilties" aria-expanded="false" aria-controls="collapse-Capabilties">
+                  <strong>Capabilities</strong>
+              </button>
+            </h2>
+            <div id="collapse-Capabilties" class="accordion-collapse collapse" aria-labelledby="heading-Capabilties" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                    <h6>A communicable and unforgeable token of authority that represents a value that references an object along with an associated set of access rights</h6>
+                    <ul>
+                        <li>It's all the permissions for a specific subject</li>
+                        <li>In order to make them unforgeable, they're either maintained by the OS, a programming language environment, some kind of cryptographic primitive, etc. in order to prevent forgery</li>
+                        <li>You don't need to verify the subject's identity since all you need is something (<i>ex: key, token, ticket, etc.</i>) that represents an object and it's associated set of access rights</li>
+                        <li>Useful when you want to communicate over a network or have parties that you want to give very fine-grained access to</li>
+                    </ul>
+
+                    <br>
+
+                    <h6>ACLs vs Capabilities</h6>
+                    <ul>
+                        <li><strong>ACLs</strong></li>
+                        <ul>
+                            <li><strong>Authorization</strong>: The system must authenticate the source of a request before it can determine authorization (To see if access to an object is valid, the system must first see if the subject is on the list of alloiwed subjects before a decision can be made)</li>
+                            
+                            <br>
+                            
+                            <li><strong>Permission narrowing and inheritance</strong>:Each child process has the same access as the parent</li>
+                            
+                            <br>
+                            
+                            <li><strong>Revocation</strong>: To revoke a subject's access to an object, you can just remove them from the ACL and if the subject tries to access an object that they no longer have access to, the reference monitor will just reject them</li>
+                        </ul>
+
+                        <br>
+
+                        <li><strong>Capabilities</strong></li>
+                        <ul>
+                            <li><strong>Authorization</strong>: Can be done without determining the identity of the subject that's requesting access to an object (The subject passes along some value, given by a trusted party, that proves that they have permission to access some object within the system)</li>
+                            
+                            <br>
+                            
+                            <li><strong>Permission narrowing and delegation</strong>: The parent simply needs to pass to the child something that proves that the child is allowed to access a resource (If the child doesn't need to access a given resource, the parent doesn't need to pass along the proof of access associated with that resource)</li>
+                            
+                            <br>
+                            
+                            <li><strong>Revocation</strong>: Revocation of already-granted permissions is very difficult to do unless a large amount of bookkeeping is done, since this would require you to go and directly revoke the permissions that you handed out</li>
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6><i>Permission inheritance in ACLs vs permission delegation in capabilities example</i></h6>
+                    <img src="CYB.ISP.2 img/access-control-capabilities-vs-ACLs.png">
+              </div>
+            </div>
+          </div>        
+
+
+          <!--  C U S T O M   R E F E R E N C E   M O N I T O R  -->
+          <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-CustomReferenceMonitor">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-CustomReferenceMonitor" aria-expanded="false" aria-controls="collapse-CustomReferenceMonitor">
+                    <strong>Custom Reference Monitor</strong>
+                </button>
+              </h2>
+              <div id="collapse-CustomReferenceMonitor" class="accordion-collapse collapse" aria-labelledby="heading-CustomReferenceMonitor" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A reference monitor used to make decisions based that's adapted to our system's policies and adopted access control model</h6>
+                    <ul>
+                        <li><strong>Reminders</strong>:</li>
+                        <ul>
+                            <li>Reference monitors always sit between the subject and the object they want to access (So if the subject has a way around the reference monitor, then the reference monitor becomes pointless)</li>
+                            <li>We always want our reference monitor to be able to make fine-grained decisions as possible when it comes to access (Since course-grained rights can lead to granting too many permissions, which is a violation of the principle of least privilege, etc.)</li>
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6>Custom reference monitor in capability based models vs ACLs</h6>
+                    <ul>
+                        <li>Custom reference monitor for capability based models</li>
+                        <ul>
+                            <li>Easier to build since all you need to do is get ownership of some object you want to build a reference monitor for and then give everyone you want to access to that object a capability that gives them access instead of giving it directly to the object</li>
+                        </ul>
+
+                        <br>
+
+                        <li>Custom reference monitor for ACLs</li>
+                        <ul>
+                            <li>ACLs don't work well with reference monitors since most subjects in the same system will run under the same user ID (Since it's more about who you are rather than the fine-grain permissions that you've been granted, which makes it very difficult and very complicated to restrict access because you'd have to go and find a way to restrict all paths that might refer to something like an object</li>
+                        </ul>
+                    </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <h6 class="letters"> D </h6>
+            
+    
+            <!--  D A T A  L A B E L S  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-DataLabels">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-DataLabels" aria-expanded="false" aria-controls="collapse-DataLabels">
+                      <strong>Data Labels</strong>
+                  </button>
+                </h2>
+                <div id="collapse-DataLabels" class="accordion-collapse collapse" aria-labelledby="heading-DataLabels" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>In order for information control flow to work, we need to label each piece of data to indicate permitted information flows (<i>ex: Where the data is from, where it's allowed to flow, etc.</i>)</h6>
+
+                        <br>
+
+                        <h6>Data labeling specifies a set of policies</h6>
+                        <ul>
+                            <li><strong>Confidentiality constraints</strong> (<i>Who may read a given piece of data?</i>)</li>
+                            <ul>
+                                <li>Label example: {Alice: Bob, Eve; Charlie: Bob, Eve}</li>
+                                <ul>
+                                    <li>Alice and Charlie conjointly own a given set of data</li>
+                                    <li>Bob and Eve are permitted to read it</li>
+                                </ul>
+                            </ul>
+
+                            <br> 
+
+                            <li><strong>Integrity constraints</strong> (<i>Who may modify a given piece of data?</i>)</li>
+                            <ul>
+                                <li>Label Example: {Alice ? Bob}</li>
+                                <ul>
+                                    <li>Alice owns the given set of data</li>
+                                    <li>Bob is permitted to modify it</li>
+                                </ul>
+                            </ul>
+                        </ul>
+
+                        <br>
+
+                        <h6>During computation, an authorized entity can also rewrite part of the label</h6>
+                        <ul>
+                            <li>Example: Alice and Bob own a piece of data</li>
+                            <ul>
+                                <img src="CYB.ISP.2 img/label-computation-example.png">
+                                <li>Originally, Alice specified that Entity 1 (E1) and Entity 2 (E2) can access this data, meanwhile Bob only specified Entity 2 (E2)</li>
+                                <li>However, Bob wants to add Entity 3 (E3) to this list of entities that can read this data</li>
+                                <li>In order to do so, Bob can rewrite his portion of the label</li>
+                            </ul>
+                        </ul>
+
+                        <br>
+
+                        <h6>Labels can also get naturally propagated during computation</h6>
+                        <ul>
+                            <li>Example: If you perform some action where you reassign X to equal Y, then X's labels are thrown away and they get the labels of Y</li>
+                        </ul>
+                  </div>
+                </div>
+              </div>  
+
+
+            <h6 class="letters"> I </h6>
+            
+    
+            <!--  I N F O R M A T I O N  F L O W  C O N T R O L  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-InformationFlowControl">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-InformationFlowControl" aria-expanded="false" aria-controls="collapse-InformationFlowControl">
+                      <strong>Information Flow Control</strong>
+                  </button>
+                </h2>
+                <div id="collapse-InformationFlowControl" class="accordion-collapse collapse" aria-labelledby="heading-InformationFlowControl" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>Controllin the flow of data in order to ensure it's confidentiality by monitoring the shared data</h6>
+
+                        <br>
+
+                        <h6>Information channels</h6>
+                        <ul>
+                            <li><strong>Covert channels</strong></li>
+                            <li><strong>Timing channels</strong></li>
+                            <li><strong>Storage channels</strong></li>
+                        </ul>
+
+                        <br>
+
+                        <h6>Information Flow Control is considered impractical as a form of access control because it's extremely difficult to stop covert channel attacks</h6>
+                  </div>
+                </div>
+              </div>     
+
+
+          <h6 class="letters"> O </h6>
+          
+  
+          <!--  O S   M E C H A N I S M S :  A M O E B A  -->
+          <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-Amoeba">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Amoeba" aria-expanded="false" aria-controls="collapse-Amoeba">
+                    <strong>OS Mechanisms: Amoeba</strong>
+                </button>
+              </h2>
+              <div id="collapse-Amoeba" class="accordion-collapse collapse" aria-labelledby="heading-Amoeba" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h6>A microkernel-based OS</h6>
+                    <ul>
+                        <li>The idea was to take a whole network of computers and make them into one machine</li>
+                        <ul>
+                            <li>When a process was started, it could start on a different machine entirely without the user even being aware of which machine his or her process was running on</li>
+                            <li>Different processes can exist, run and access resources on other computers in the syste, which is all transparently handled by the overall distributed OS that runs across the different computers in the system</li>
+                        </ul>
+                        <li>Amoeba uses capabilities to avoid having the OS do constant authentication on different machines in the same system since this would be very burdensome on the system, as well as slow it down</li>
+                        <ul>
+                            <li>Each object in the Amoeba OS resides on a server</li>
+                            <li>To perform an operation on an object, a subject would send a message to the server, which would contain the proof of capability, the object and the action that the subject wishes to perform on the object, as well as a check field to ensure that capabilities could not be modified</li>
+                            <img src="CYB.ISP.2 img/amoeba-capabilities.jpg">
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6><strong>Amoeba capabilities</strong></h6>
+                    <ul>
+                        <li>The most important part of this system from a security perspective is how it handles capabilities and how those capabilities can be verified while remaining unforgeable</li>
+                        <ul>
+                            <li>The way capabilities work in Amoeba is that when a server creates an object, it returns the owner capabilities to the owner</li>
+                            <ul>
+                                <li>Whoever created the new object becomes its owner and they have a <strong>rights field</strong> (A bit string that contains zeros, which represents permissions that you don't have, and ones, which represents permissions that you do have) where they have all permissions on it</li>
+                            </ul>
+
+                            <br>
+
+                            <li>All the permissions bits for the owner's capabilities are set to one (Allowed) and then it generates a <strong>check field</strong> (A random scret number that's generated and only known by the server and the owner), which contains a random 48-bit number that is stored server-side and sent to the owner</li>
+                            
+                            <br>
+
+                            <li>When the owner wants to grant capabilities for an object to another subject, they can set some of the rights bits' to zero (Not allowed) and calculate a new check field</li>
+                            <ul>
+                                <li>This allows you to do delegation without involving a trusted third party or server</li>
+                                <li>The server can verify the rights and check field</li>
+                                <li>Without the owner capability, you cannot forge a derived capability since the secret is in the check field (When the owner creates a new capability ticket, they generate a new check field using the new rights and gets XORed (<i>exclusive or</i>) together with the old check field using a one): <strong>checkn = H(checkn-1 XOR rightsn)</strong></li>
+                                <ul>
+                                    <li>The owner will create a new rights field for a subject and set the bits for all the permissions that they don't want them to have to 0 and then will generate a new check field for that subject that (The owner takes the subject's new rights and the owner's old check field and he XORs them together, then he takes the secure hash of the output, which gives him a new check field</li>
+                                    <li>The owner can send this new rights string (rightsn) and the new check string (checkn) over to the subject they want to grant access to</li>
+                                    <li>That subject can then send it to the server, who has the old check field as well</li>
+                                    <li>The server can the XOR the new rights string with the old check field and hash that value, and if it matches the new check field then access is granted</li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </ul>
+
+                    <br>
+
+                    <h6>Revoking permissions in Amoeba</h6>
+                    <ul>
+                        <li>All you have to do is change the random check value and issue a new capability, which will make none of the old capabilities have their check fields match when the server goes and tries to match it with the new hash value (It's not a very fine-grained way to do trust revocation since you can't really go and revoke some people's tickets, but it does provide an effective mechanism</li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+
+
+            <h6 class="letters"> R </h6>
+            
+    
+            <!--  R E M O T E  A T T E S T A T I O N  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-RemoteAttestation">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-RemoteAttestation" aria-expanded="false" aria-controls="collapse-RemoteAttestation">
+                      <strong>Remote Attestation</strong>
+                  </button>
+                </h2>
+                <div id="collapse-RemoteAttestation" class="accordion-collapse collapse" aria-labelledby="heading-RemoteAttestation" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>It's when a trusted computing platform / Trusted Platform Module (<strong>TPM</strong>) attests the authority and integrity of the software in the system to a party that doesn't currently control the system</h6>
+                        <ul>
+                            <li>this may be useful to prove to a party that the software has not been replaced with an older and more vulnerable version, or that the software was not replaced with a Trojan that looks like it (Though this is useful, if the software contains vulnerabilities, it doesn't stop an attacker from taking advantage of those vulnerabilities to inject and run code in the system, etc.)</li>
+                        </ul>
+                  </div>
+                </div>
+              </div>
+
+
+              <h6 class="letters"> T </h6>       
+
+      
+              <!--  T A I N T  A N A L Y S I S  -->
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading-TaintAnalysis">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-TaintAnalysis" aria-expanded="false" aria-controls="collapse-TaintAnalysis">
+                        <strong>Taint Analysis</strong>
+                    </button>
+                  </h2>
+                  <div id="collapse-TaintAnalysis" class="accordion-collapse collapse" aria-labelledby="heading-TaintAnalysis" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <h6>Checking the flow of user input in application code to determine if unanticipated input can affect program execution in malicious ways</h6>
+                        <ul>
+                            <li>A user's input gets tagged and then followed through the program</li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              
+      
+              <!--  T R U S T E D  C O M U P U T I N G  -->
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading-TrustedComputing">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-TrustedComputing" aria-expanded="false" aria-controls="collapse-TrustedComputing">
+                        <strong>Trusted Computing</strong>
+                    </button>
+                  </h2>
+                  <div id="collapse-TrustedComputing" class="accordion-collapse collapse" aria-labelledby="heading-TrustedComputing" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <h6>A broad term that refers to technologies and proposals for resolving computer security problems through hardware enhancements and associated software modifications (<i>ex: Ensuring that software updates only come from specific domains or are only signed by certains keys, Ensuring that code that runs on the machine is developped by an entity on a small list of approved developpers or development teams, etc.</i>)</h6>
+                        <ul>
+                            <li>Without trusted computing, we assume that once a machine leaves our control, we no longer have the ability to make guarantees about the system meaning that the system is believed to be entirely under the control of the person who currently operates and uses the device</li>
+                            <li>Trused computing works with the help of special hardware called a Trusted Platform Module (<strong>TPM</strong>), which is usually inaccessible to attackers, stores some special keys that are not accessible by the user, used by a machine to perform operations like remote attestion, etc.</li>
+                        </ul>
+
+                        <br>
+
+                        <h6>Potential negative uses for trusted computing</h6>
+                        <ul>
+                            <li>The idea of trusted computing threatens a person's autonomy over the property they own (<i>ex: Businesses could use trusted computing to ensure that only certain types of print cartridges are used or that software from their competitors cannot be installed, etc.</i>)</li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>      
+
+                
+                <!--  T R U S T E D  E X F I L T R A T I O N  -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-TrustedExfiltration">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-TrustedExfiltration" aria-expanded="false" aria-controls="collapse-TrustedExfiltration">
+                          <strong>Trusted Exfiltration</strong>
+                      </button>
+                    </h2>
+                    <div id="collapse-TrustedExfiltration" class="accordion-collapse collapse" aria-labelledby="heading-TrustedExfiltration" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                            <h6></h6>
+                      </div>
+                    </div>
+                  </div>
+
+
+            <h6 class="letters"> W </h6>
+            
+    
+            <!--  W E B  B R O W S E R  -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-WebBrowser">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-WebBrowser" aria-expanded="false" aria-controls="collapse-WebBrowser">
+                      <strong>Web Browser</strong>
+                  </button>
+                </h2>
+                <div id="collapse-WebBrowser" class="accordion-collapse collapse" aria-labelledby="heading-WebBrowser" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                        <h6>An application program that provides a way to look at and interact with data that's available on the WWW</h6>
+                        <ul>
+                            <li>Web browsers are different from most other programs because they're meant to take in resources from remote and untrusted areas of the Web and render or run them on your local machine</li>
+                        </ul>
+                        
+                        <br>
+                        
+                        <h6>OS vs Web browsers</li>
+                        <ul>
+                            <li>Operating systems have system calls to interact with trusted code, the web browsers uses the Document Object Model (<strong>DOM</strong>) to allow subjects to interact with different web content</li>
+                            <li>Operating systems manage storage on the disk (disk based storage), and allows or disallows access based on certain policies, the web broswer has <strong>local storage in cookies</strong>, and allows or disallows access to cookies based on certain policies</li>
+                            <li>Operating systems have isolation based on processes while web browsers have isolation based on frames</li>
+                            <li>Operating systems' principals (An entity that can be authenticated by a computer system or network) are users and you mediate actions based on that while web browsers' principles are where your content comes from (<strong>origins</strong>) and you mediate actions based on that</li>
+                        </ul>
+                  </div>
+                </div>
+              </div>     
+
+    
+              <!--  W E B  B R O W S E R :  G O O G L E  -->
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading-Google">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-Google" aria-expanded="false" aria-controls="collapse-Google">
+                        <strong>Web Browser: Google</strong>
+                    </button>
+                  </h2>
+                  <div id="collapse-Google" class="accordion-collapse collapse" aria-labelledby="heading-Google" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <h6>An application program that provides a way to look at and interact with data that's available on the WWW</h6>
+                        <ul>
+                            <li>Google uses Chromium, which is the source code for what became the Chrome browser and that was created by Google</li>
+                        </ul>
+
+                        <br>
+
+                        <h6><strong>Chromium: Security Architecture</strong></h6>
+                        <ul>
+                            <li>Chromium sandboxes the render engins and plugins so that when one has issues, these issues don't bleed over to the rendering of other sites on different tabs</li>
+                            <img src="CYB.ISP.2 img/chromium-security-architecture.png">
+                        </ul>
+
+                        <br>
+
+                        <h6><strong>Chromium: Threat Model and Leverage of OS Isolation</strong></h6>
+                        <ul>
+                            <li>The sandboxing done in Chromium leverages <strong>four OS mechanisms</strong>, on Windows, these include:</li>
+                            <ul>
+                                <li><strong>A token with restricted rights</strong></li>
+                                <li><strong>The Windows job object</strong></li>
+                                <li><strong>The Windows desktop object</strong></li>
+                                <li><strong>Integrity levels</strong></li>
+                            </ul>
+                            <img src="CYB.ISP.2 img/chromium-OS-isolation.png">
+                        </ul>
+
+                        <br>
+                        
+                        <h6><strong>Chromium: Components of Browser Security Policy</strong></h6>
+                        <ul>
+                            <li>While sandboxing and access control are the mechanisms that keep the browser secure, they're only as strong as the security policy they protect</li>
+                            <li>Frame-frame relationships</li>
+                            <ul>
+                                <li>Isolation can be done on the frame level, as well on a process level in an OS</li>
+                                <li>Just like how processes sometimews want to interact with each other on an OS, we sometimes have frames that want to interact with each other on the browser, which can do in a few different ways:</li>
+                                <ul>
+                                    <li><strong>CanScript</strong></li>
+                                    <ul>
+                                        <li>Imagine you have two frames: Frame A and Framce B</li>
+                                        <ul>
+                                            <li>We can say CanScript (Frame A and Frame B) is true if the policy allows Frame A to <strong>execute a script that manipulates arbitrary DOM elements</strong> of Frame B</li>
+                                        </ul>
+                                        <li>We need to be very careful with the CanScript relationship, since running arbitrary scripts on other frames can lead to the compomise of accounts, unwanted actions, and other undesirable outcomes</li>
+                                    </ul>
+                                    <br>
+
+                                    <li><strong>CanNavigate</strong></li>
+                                    <ul>
+                                        <li>Imagine you have two frames: Frame A and Framce B</li>
+                                        <ul>
+                                            <li>We say CanNavigate (Frame A and Frame B) is true if Frame A is allowed to <strong>change the origin of content</strong> for Frame B</li>
+                                        </ul>
+                                        <li>One element of a frame is its <strong>origin</strong></li>
+                                        <ul>
+                                            <li>Some security mechanisms rely on the origin in order to make access control decisions, meaning that being able to change the origin of another frame is something we would want to do only in the most rare of circumstances</li>
+                                        </ul>
+                                    </ul>
+                                </ul>
+                            </ul>
+
+                            <br>
+
+                            <li>In addition to the frame-to-frame relationship above, a browser also needs to check how a frame can interact with a principle like storage through cookies</li>
+                            <ul>
+                                <li>Sometimes, the frame should be able to read or write cookies from the given site and sometimes it should not</li>
+                                <ul>
+                                    <li>In order to do this, we have the ReadCookie and WriteCookie checks</li>
+                                    <li>Imagine you have a frame F and a site S</li>
+                                    <ul>
+                                        <li>We say that ReadCookie (F, S) is true if the Frame F is allowed to read cookies from Site S</li>
+                                        <li>We say that WriteCookie (F, S) is true if we're allowed to write cookies for Site S from Frame F</li>
+                                    </ul>
+                            </ul>
+                        </ul>
+
+                        <br>
+                        
+                        <h6><strong>Chromium: Good Design Decisions</strong></h6>
+                        <ul>
+                            <li>Chromium follows the principle of least privilege, both to sandboxed code and to the code that controls the sandbox (Sandboxes and the code inside them were given minimal privileges to do what they needed to do)</li>
+                            <ul>
+                                <li>Part of the reason for this is because of the assumption that the code that's running in the sandbox is malicious code (besides some early code to set up the sandbox, code that starts executing from the moment the untrusted code arrives should be considered to be malicious)</li>
+                                <li>Following this assumption, it's only logical that the principle of lest privilege should be used in order to avoid further compromise</li>
+                            </ul>
+
+                            <br>
+
+                            <li>In addtion to the privilege of least privilege, the development team of Chromium decided not to re-invent the wheel and instead let the OS apply its security to the objects it controls</li>
+                            <li>In adition, it created some application-level objects that have a custom security model, but they didn't extend the OS kernel with a different security model</li>
+                            <li>In addition, Chromium attempts to be nimble</li>
+                            <ul>
+                                <li>The sandbox is designed to impose near-zero performance impact, but accepts performance penalties for exceptional cases whena sensitive resource needs to be handled in a controlled manner (This is aided by proper use of the OS security mechanisms)</li>
+                            </ul>
+                            <li>Chromium doesn't attempt to achieve security by needlessly emulating</li>
+                            <ul>
+                                <li>Emulations and virtual machines don't inherently provide security by themselves (Instead, Chrmoium provides sandboxing that doesn't rely on code emulation, translation or patching to provide the security desired)</li>
+                            </ul>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+
+        
+            <!--    -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading-">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-" aria-expanded="false" aria-controls="collapse-">
+                      <strong></strong>
+                  </button>
+                </h2>
+                <div id="collapse-" class="accordion-collapse collapse" aria-labelledby="heading-" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+          
+                  </div>
+                </div>
+              </div>
+
+
+        </div>
+      </div>
+    </div>
+
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

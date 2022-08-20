@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True or False</title>
+
+    <!--  C S S  C O D E  -->
+    <style>
+        body {
+            text-align: center;
+            padding-top: 15%;
+        }
+
+        #version {
+            margin-top: 0;
+        }
+    </style>
+
+
+</head>
+<body>
+
+
+    <!--  P A G E  H E A D I N G  -->
+    <h1>True or False</h1>
+    <h6 id="version">quiz for NYU's Cybersecurity Fundamentals MicroBachealors</h6>
+
+
+    <!--  D I S P L A Y  C O R R E C T I O N  -->
+    <h4 id="correction">Press the button below to generate a question.</h4>
+
+
+    <!--  G E N E R A T E  R A N D O M   Q U E S T I O N  -->
+    <button id="generate-question" onclick="quiz()">Generate a question</button>
+    
+
+    <!--  K E E P  T R A C K  O F  W I N  S T R E A K  -->
+    <h6 id="streak"></h6>
+
+    <!--  F O O T E R  -->
+    <footer>
+        Quiz by Coursaries
+    </footer>
+
+
+    <!--  J A V A S C R I P T  C O D E  -->
+    <script>
+
+
+        // Store all of the questions inside a variable
+        const QUESTIONS = [
+
+            //  C Y B . I S P . 1
+            "An attack is an action that involves exploitation of some vulnerability.",
+
+            "A breach is any incident that results in unauthorized access to a system or organization",
+            "The four types of breaches are breaches in confidentiality, integrity, availability and security.",
+
+            "The CIA Triad can be used for finding vulnerabilities.",
+            "The C in the CIA Triad stands for confidentiality, which ensures that there's no unauthorized disclosure of data and is enforced through encryption.",
+            "The I in the CIA Triad stands for integrity, which ensures that there's no unauthorized modification of data and is enforced through hashes.",
+            "The A in the CIA Triad stands for availability, which ensures that there's no unauthorized withholding of data and is enforced through redundancy.",
+            
+            "Computer security is defined as preventing attackers from achieving objective through unauthorized access or unauthorized use of computers and networks by providing certain security properties in certain environments.",
+            
+            "Security design principles are principles that help make systems as free of Vulnerabilities and impervious to attacks and breaches.",
+            "The principle of open design states that your system shouldn't rely on the crecy of your implementations.",
+            "The principle of sweeping simplifications, also known as KISS (Keep It Simple Stupid!) states that the design and interactions in your system should be easy and simple.",
+            "The principle of design for iteration states that you should design your software to ensure that you can change parts of it in the future, in case we need to.",
+            "The principle of least astonishment states that you should create something that follows what the user would expect to happen in a given situation.",
+            "The principle of minimizing secrets states that you should minimize the size, quantity and complexity of what is to be protected, as well as limit the externally facing points of attacks.",
+            "The principle of least privilege states that an entity should have exactly the permissions they need in order to fullfill their tasks.",
+            "The principle of complete mediation states that all access to objects should be checked to ensure that access is allowed.",
+            "The principle of least common mechanisms states that mechanisms used to access resources shouldn't be shared.",
+            "The principle of fail-safe defaults states that if some part of the system fails, then it should default in a way that has the appropriate security guarantee for whatever it is you want to have happen, in order to not have your system compromised.",
+            "The principle of economy of mechanisms states that security mechanisms should be as simple as possible while still having the security properties that you need.",
+            
+            "A security mechanism is something that enforces a security policy, either in whole or part.",
+            "Security mechanisms based on prevention is a security mechanism that ensures that an aspect of a security policy cannot be violated.",
+            "Security mechanisms based on detection is a security mechanism that determines whether a security policy has been violated.",
+            "Security mechanisms based on recovery is a security mechanism that ensures that we'd be able to revert back to a secure state after a security policy has been violated.",
+
+            "A security model defines essential aspects of security and their relationship with the OS and its performance.",
+
+            "The Bell-LaPadula (BLP) security model is a security model that provides confidentiality to a system.",
+            "The BLP's simple security property states that a subject at a given security level may not read an object at a higher security level (NO READ UP).",
+            "The BLP's * security property states that a subject at a given security level may not write to any object at a lower security level (NO WRITE DOWN).",
+            "The strong * security property states that a subject at a given security level may only write to objects with a matching security level.",
+            
+            "The Biba integrity model is a security model that describes a set of access control rules designed to ensure data integrity by grouping objects and subjects into ordered levels of integrity.",
+            "The Biba integrity model's simple integrity property states that a subject at a given level of integrity must not read data at a lower integrity level (NO READ DOWN).",
+            "The Biba integrity model's * integrity property states that a subject at a given level of integrity must not write to data at a higher integrity level (NO WRITE UP).",
+            
+            "Lipner's model is a security model that combines the elements of the BLP and Biba models to provide confidentiality and integrity to system",
+            "Lipner's model uses seperation of duty to ensure a system's confidentiality and integrity, which requires at least two dfiferent people to perform the steps if two or more steps are required to perform the duty.",
+            "Lipner's model uses seperation of function to ensure a system's confidentiality and integrity, which isolates the assets of an organization or system from each other based on function.",
+            "Lipner's model uses auditing to ensure a system's confidentiality and integrity, which analyzes systems to determine what actions took place and who performed them.",
+
+            "The Clark-Wilson integrity model is a security model provides a foundation for specifying and analyzing an integrity policy for a computing system that's based on the notion of a transaction.",
+            "A well-formed transaction is a series of operations that transition a system from one consistent state to another consistent state.",
+            "The integrity policy in the Clark-Wilson model addresses the integrity of the transactions.",
+
+            "The Chinese Wall model is a security model that concentrates on confidentiality that helps prevent there from being conflicts of interest between different businesses and organizations.",
+            
+            "A security policy is a series of rules that must be followed in order to ensure the safety of an organization and its system.",
+            "Inclusive security policies is a list of all the things that you're allowed to do and anything not mentioned is automatically disallowed.",
+            "Exclusive security policies is a list of all the things that you're not allowed to do and anything not mentioned is automatically allowed.",
+            "Exclusive security policies requires you to update the policy more frequent since there's always new technology that comes out.",
+            
+            "A threat is a potential occurence that can have an adverse & negative effect of any kind on a system or organization.",
+            "The types of threats include threats of disclosure (disclosure of data, etc.), threats of deception (tricking a system, etc.), threats of disruption (disrupting operations, etc.) and threats of usurpation (seizing of operations, etc.).",
+            
+            "Threat modelling is understanding what can go wrong with a system and the potential vulnerabilities, threats, breaches and attacks.",
+            "The first step in threat modelling is enumerating your assets.",
+            "The second step in threat modelling is determining the possible threats to the system.",
+            "The third step in threat modelling is performing risk assessment in a quantitative approach (The expected losses for all successful attacks) and a qualitative approach (Categorizing the level of a risk using categories and labels).",
+            "The last step in threat modelling is performing risk management (Transferring the risk, Mitigating the risk, Removing the risk, Accepting the risk, etc.).",
+            
+            "Microsoft's STRIDE threat modelling system is a framework that helps us decide what threats are possible against a system and its different assets.",
+            "Microsoft's STRIDE threat modelling stands for Spoofing (tricking something or somebody), Tampering (interfering or altering something), Repudation (refusal to recognize an action or transaction), Information disclosure, Denial of service and Elevation of privilege.",
+        
+            "The DREAD threat randking method helps us rank the threats found in order to figure out what we should take care of first and vice versa.",
+            "DREAD stands for Damage potential, Reproductivity, Exploitation cost, Affected users and Discoverability.",
+            
+            "A Cyber Kill Chain defines the stages of a possible attack.",
+
+            "An attack tree allows us to systematically consider the potential attacks that may realize a threat by representing the possible attacks that can happen, as well as help us sort out thoughts on how attacks might occur.",
+            
+            "The tranquility principle states that the classification of a subject or object does not change while it is being reference.",
+            "The principle of strong tranquility states that security levels do not change during the normal operation of the system.",
+            "The principle of weak tranquility states that security levels may never change in such a way as to violate a defined security policy.",
+            "The principle of weak tranquility is desirable as it allows systems to observe the principle of least privilege.",
+            
+            "Trust is the expectation that arises within a community of regular, honest, cooperative behavior based on commonly shared norms.",
+            
+            "A vulnerability is a weakness that makes it possible for a threat to occur.",
+            
+            //  C Y B . I S P . 2  ( E N C R Y P T I O N )
+            "The birthday paradox considers the probability that some paired people in a set of n randomly chosen of them, will have the same birthday.",
+
+            "A Data Encryption Standard (DES) is a symmetric-key/private key model algorithm for the encryption of digital data",
+            "DES was deemed controversial because.",
+
+            "A digital certificate is an electronic document used to prove the ownership of a Public key",
+            "A digital certificate includes information about the Public key, the identity of its owner (subject) and the digital signature of an entity that has the verified certificate's contents (issuer).",
+            
+            "A digital signature lets the receiver know that the data was sent by a known sender (authentication) and that the message was not altered during transit (integrity).",
+            "A digital signature is done using a user's private key.",
+            
+            "Encryption refers to secure information and communication techniques derived from mathematical concepts and a set of rule-based calculations called algorithms, to transform messages in ways that are hard to decipher.",
+
+            "Symmetric / private key encryption requires a private key and three algorithms.",
+            "Asymmetric / public key encryption requires a private key, a public key and four algorithms.",
+            "Asymmetric / public key encryption is much slower than symmetric / private key encryption.",
+            "Key management is much simpler in asymmetric / private key encryption.",
+            "Asymmetric / private key encryption alleviates the need to share secrets before communicating between parties.",
+            
+            "A hash value / digest is a fixed code sequence outputted by a hash function.",
+            "Hashing is a one-way process that maps a variable-length data to a fixed-length hash value / digest.",
+            "A hash function is an algorithm that takes a piece of data and outputs a hash value / digest.",
+            "A hash function can take any data of any length as input.",
+            "A hash function outputs a hash value of fixed-length.",
+            "A hash function H() is relatively easy to compute given the input X.",
+            "A hash function is deterministic, meaning that given the same input X, we get the same output when hashed H(X).",
+            "Knowing the hash of something shouldn't give you any information about what data got put into the hash function.",
+            "Hash functions have a weak-collision resistance property, meaning, when given an input X and a hashing function H(), that it should be very difficult to find another input Y on which H(X) == H(Y).",
+            "Hash functions have a strong-collision resistance property, meaning, when given two inputs X and Y and a hashing function H(), there should exist an absolute minimum change of H(X) == H(Y).",
+            "Hash functions have a one-wayness property.",
+            "A collision is when different data inputs result in the same hash value after being processed by a hashing function.",
+            
+            "A Public Key Infrastructure (PKI) refers to a set of roles, policies, hardware, software and procedures needed to create, manage, distribute, use, store and revoke digital certificates and manage public key encryption.",
+            "A Certification Authority (CA) is the one responsible for issuing certificates.",
+            "A Registration Authority (RA) is responsible for verifying the actual identity of the individual requesting a certificate.",
+            "A Certification Revocation List (CRL) is a signed document that contains information about which certificates have been revoked, which contains the serial number of the revoked certificate, the time of revocation and the reason for revocation for each certificate in the list.",
+            "A Certification Revocation List (CRL) is signed by the Certification Authority (CA) and then released at a CRL Distribution Point (CDP).",
+
+            "A simple certification model is a model where we only have one Certification Authority (CA) that gives out certificates.",
+            "A multi-layer certification model is a model where we have a Root Certification Authority that delegates trust to other Certification Authorities, who then issue certificates for others.",
+            "A cross certification model is a model where trusting one Certification Authority automatically leads to trusting the another.",
+            "A chain of trust certification structure is when an entity receives a certificate and then they go all the way up the chain up until the Root Certification Authority to check who issued that certificate.",
+            "A multiple cross certification structure is a structure where multiple Certification Authority can mutually cross-certify each other.",
+            "A bridge cross certification structure is a structure where one Certification Authority acts as a bridge that certififes all the other Certification Authorities, and all of the other Certification Authorities certify that one bridge.",
+            
+            "Triple Data Encryption Standard (Triple-DES) is a modification of DES that allows people to continue using the DES algorithm in a more secure way since the original DES has been cracked.",
+            'Triple-DES encryption applies DES three times to each "block" of the message.',
+            "Triple-DES encryption is C = Enc(K3, Enc(K2, enc(K1, M))).",
+            "Triple-DES decryption is M = Dec(K1, Dec(K2, Dec(K3, C))).",
+
+            //  C Y B . I S P . 2   ( A U T H E N T I C A T I O N )
+            "Biometrics are individual physiological and/or behavioral characteristics of a person.",
+            "There are two types of biometrics: Physical and behavioral biometrics.",
+            "Biometrics gives all the users of a system an equal level of security, since there's no password choice and it doesn't require you to remember anything.",
+            "One disadvantage of biometrics is irrevocability, since you can't change leaked biometric data.",
+            
+            "The null hypothesis (H0) in hypothesis testing is when the inputted biometric measurement doesn't match the biometric data template of the person that they're trying to authenticate themselves as.",
+            "The alternative hypothesis (H1) in hypothesis testing is when the inputted biometric measurement matches the biometric data template of the person that they're trying to authenticate themselves as.",
+            "The null decision (D0) in hypothesis testing states that the user is not who they claim to be.",
+            "The alternative decision (D1) in hypothesis testing states that the user is who they claim to be.",
+            "Hypothesis testing formulation contains two types of errors: False Match (D1 when H0) and False Non-Match (D0 when H1).",
+            "",
+            "",
+            ""
+        ];
+
+
+        // Create and initialize a variable to keep count of the user's current win streak
+        let streak = 0;
+
+
+        // Quiz function
+        function quiz() {
+
+
+            // Generate a random index number for a random question
+            let random_question = Math.floor(Math.random() * (QUESTIONS.length));
+
+
+            // Ask the user a random question and store their answer inside a variable
+            let answer = prompt(`${QUESTIONS[random_question]}`, placeholder="True or False?");
+
+            
+            // Convert the user's answer to all lowercase to make it easier to compare
+            answer = answer.toLowerCase();
+
+
+            // Display if the user's answer is correct (ALL ANSWERS ARE TRUE LOL) and increment their win streak
+            if (answer == "true"){
+                document.getElementById("correction").innerText = "Correct!";
+                document.body.style.backgroundColor = "#90EE90";
+                streak += 1
+                document.getElementById("streak").innerText = `Current win streak: ${streak}`;
+
+            // Display if the user's answer is incorrect (ALL ANSWERS ARE TRUE LOL) and increment their win streak
+            } else if (answer == "false") {
+                document.getElementById("correction").innerText = "Incorrect!";
+                document.body.style.backgroundColor = "#FF6865";
+                streak = 0;
+                document.getElementById("streak").innerText = `Current win streak: ${streak}`;
+
+            // Display if the user answers something else (ALL ANSWERS ARE TRUE LOL) and reset their win streak
+            } else {
+                window.alert("Uh oh! My program can't seem to read your answer. Please ensure that you've properly typed it in.");
+                streak = 0;
+                document.getElementById("streak").innerText = `Current win streak: ${streak}`;
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

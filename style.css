@@ -1,0 +1,72 @@
+/*  H T M L   B O D Y  */
+body {
+    padding-top: 10%;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+img {
+  max-width: 99%;
+  max-height: 99%;
+}
+
+/*  P A G E   T I T L E S  */
+.headers {
+  text-align: center;
+  font-weight: bolder;
+  font-family: 'Arial Black', Arial, sans-serif;
+}
+
+/*  B U T T O N S  */
+.menus {
+  align-content: center;
+  font-size: medium;
+  margin: 5px;
+  width: 50%;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/*  S E A R C H   B A R  */
+.search-bar {
+  width: 46%
+}
+
+/*  L E T T E R   C A T E G O R Y   I N D I C A T O R  */
+.letters {
+  text-align: left;
+  padding-left: 7px;
+}
+
+/* */
+.definitions {
+    display: inline-block;
+    text-align: left;
+}
+
+/*
+button:link {
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  button:visited {
+    color: rgb(87, 19, 19);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  button:hover {
+    color: rgb(88, 86, 86);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  button:active {
+    color:brown;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+*/
